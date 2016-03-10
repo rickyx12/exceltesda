@@ -1,0 +1,18 @@
+
+p{
+	font-family:arial;
+	border-style:solid;
+	border-width:thin;
+	border-radius:10ox;
+	padding:10px;
+	
+}
+
+.group1 {
+	color:teal;
+	line-height:25px;
+}
+
+#p1 {
+	color:Red;
+}
