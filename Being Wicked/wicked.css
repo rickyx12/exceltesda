@@ -1,0 +1,377 @@
+#body {
+	padding:-20px;
+	
+}
+
+#header {
+	background:black;
+	height:44px;
+	width:100%;
+	//padding-top:3px;
+	margin:0px;
+}
+
+
+#headerMenu {
+	color:white;
+	list-style-type:none;
+	
+}
+
+#headerContainer {
+	//border:1px solid #ffffff;
+	width:79%;
+	text-align:right;
+	margin:0px;
+}
+
+#headerMenu li {
+	display:inline;
+	margin:10px;
+	font-size:13px;
+}
+
+#body {
+	//border:1px solid #000;
+	height:580px;
+	width:600px;
+	margin:auto;
+}
+
+#logoContainer img {
+	//border:1px solid #ff0000;
+	width:80%;
+}
+
+#leftHead {
+	color:#a39e9e;
+	font-family:Times New Roman;
+	margin-top:10px;
+	font-size:23px;
+	margin-left:-40px;
+}
+
+.rows {
+	//border:1px solid #000;
+	width:100%;
+	height:175px;
+}
+
+.colsLeft {
+	//border:1px solid #ff0000;
+	width:60%;
+	height:100%;
+	float:left;
+}
+
+.colsRight {
+    //border: 1px solid #18851f;
+    width: 29%;
+    height: 100%;
+    float: right;
+}
+
+.rightHead {
+	color:#aaaaaa;
+	font-size:15px;
+	margin-left:5px;
+}
+
+.rightNeck {
+	color:#ff8200;
+	margin-top:-22px;
+	font-size:30px;
+	margin-left:5px;
+}
+
+.rightBody {
+	font-size:11px;
+	margin-top:-22px;
+	margin-left:3px;
+	margin-right:3px;
+	font-family:calibri;
+}
+
+.rightFoot {
+	font-size:11px;
+	color:black;
+	font-family:calibri;
+}
+
+.leftMessage {
+	font-size:16px;
+	margin:3px;
+	font-family:Calibri;
+}
+
+.menuLink {
+	color:white;
+	text-decoration:none;
+	padding-top:-10px;
+}
+
+.linkContainer {
+	border:1px solid orange;
+	float:left;
+	width:60px;
+	height:32px;
+	padding-top:15px;
+	margin:0px;
+	padding-right:15px;
+}
+
+#leftHeader {
+	//background:red;
+	width:100%;
+	height:50px;
+	position:absolute;
+	right:-500px;
+	margin:0px;
+	float:left;
+}
+
+#rightHeader {
+	//background:yellow;
+	width:240px;
+	height:45px;
+	float:left
+}
+
+table {
+	//border:1px solid red;
+	width:300px;
+}
+
+table td {
+	width:5%;
+	//border:1px solid yellow;
+	text-align:center;
+	height:40px;
+	font-size:12px;
+}
+
+table td:hover {
+	background:#cccccc;
+	font-weight:bold;
+}
+
+.linkMenu {
+	text-decoration:none;
+	color:white;
+	font-size:17px;
+}
+
+.linkMenu_below {
+	font-size:10px;
+	color:White;
+	text-decoration:none;
+}
+
+#talkToUs {
+	text-decoration:none;
+	color:white;
+	font-size:12px;
+}
+
+#talkToUsTD {
+	width:10%;
+	//border:1px solid yellow;
+	text-align:center;
+	height:40px;
+	font-size:12px;
+}
+
+
+
+
+
+/**about us**/
+#bodyTop {
+	border:1px solid white;
+	width:100%;
+	height:200px;
+}
+
+#bodyTop_border {
+	border-top:1px solid white;
+	border-left:1px solid white;
+	border-right:1px solid white;
+	border-bottom:1px solid black;
+	width:100%;
+	height:200px;
+}
+
+.bodyLeft {
+	border:1px solid white;
+	height:100%;
+	width:200px;
+	float:left;
+}
+
+.bodyRight {
+	border:1px solid white;
+	height:100%;
+	width:395px;
+	float:left;
+}
+
+#bodyMid {
+	border:1px solid white;
+	width:100%;
+	height:160px;
+}
+
+
+#about {
+	font-size:60px;
+	font-family:calibri;
+	margin-bottom:-30px;
+	margin-left:5px;
+	margin-top:40px;
+}
+
+.grayText {
+	color:#aaaaaa;
+	margin-left:5px;
+	font-size:30px;
+	margin-left:5px;
+}
+
+#theTeam {
+	margin-top:0px;
+	margin-bottom:2px;
+}
+
+
+#messageRight {
+	margin-top:50px;
+	font-family:calibri;
+	padding-left:5px;
+}
+
+.leftMessage_aboutus {
+	font-size:10px;
+	margin:5px;
+}
+
+#bookLove {
+	color:#fa2929;
+	margin-top:-5px;
+	margin-left:5px;
+	margin-bottom:-5px;
+	font-size:35px;
+	font-family:calibri;
+}
+
+#bookLoveLetter {
+	font-family:calibri;
+	font-size:10px;
+	margin-left:5px;
+	margin-bottom:0px;
+}
+
+
+#bodyBottom {
+	border:1px solid white;
+	width:100%;
+	height:160px;
+}
+
+#seriously {
+	font-weight:bold;
+	font-size:10px;
+	margin-left:5px;
+	margin-bottom:-20px;
+}
+.seriouslyItem {
+	font-size:12px;
+	margin-left:-10px;
+}
+
+#logoAboutUs {
+	width:20px;
+	height:20px;
+}
+
+#tblAboutUs {
+	//border:1px solid black
+}
+
+#bodyContact {
+	border:1px solid white;
+	width:100%;
+	height:390px;
+}
+
+
+.grayText_contact {
+	color:#aaaaaa;
+	margin-left:5px;
+	font-size:30px;
+	margin-left:5px;
+	margin-bottom:-55px;
+}
+
+.grayText_contact_reach {
+	color:#aaaaaa;
+	font-size:30px;
+	margin-left:10px;
+	margin-top:40px;
+	margin-bottom:-110px;
+}
+
+.grayText_contact_sched {
+	color:#aaaaaa;
+	font-size:30px;
+	margin-left:10px;
+	margin-top:40px;
+	margin-bottom:-90px;
+}
+
+
+#aboutUs_rightMessage {
+	margin-left:5px;
+}
+
+#aboutUs_rightMessage_link {
+	text-decoration:none;
+	color:black;
+	font-weight:bold;
+}
+
+#email {
+	font-size:9px;
+	margin-top:90px;
+	margin-left:5px;
+}
+
+label {
+	margin:5px;
+}
+
+.longText {
+	margin:5px;
+	width:300px;
+}
+
+.shortText {
+	margin:5px;
+	width:50px;
+}
+
+textarea {
+	margin:5px;
+	width:250px;
+	height:120px;
+}
+
+button {
+	margin:5px;
+	background:black;
+	color:white;'
+	border:0px solid #000;
+	margin:auto;
+	font-size:10px;
+	height:30px;
+	width:260px;
+}
