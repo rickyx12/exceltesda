@@ -18,6 +18,16 @@
 	float:left;
 }
 
+.menuLinks {
+	text-decoration:none;
+	color:black;
+	font-weight:bold;
+}
+
+.menuLinks:hover {
+	color:green;
+}
+
 table {
 	border:1px green;
 	width:50%;
@@ -32,10 +42,6 @@ table td {
 	text-align:center;
 	width:20%;
 	padding:-10px;
-}
-
-table td:hover {
-	color:white;
 }
 
 
