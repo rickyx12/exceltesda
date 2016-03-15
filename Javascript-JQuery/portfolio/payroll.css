@@ -1,0 +1,91 @@
+
+#mainBox {
+	//border:1px solid red;
+	//width:90%;
+	//height:550px;
+	//margin:2%;
+	
+//background:url('pinoy1.jpg') -25px -50px;
+//position:fixed ;
+//top:0;
+width:100%;
+//z-index:0;
+height:100%;
+//background-size: calc(100% + 50px);
+//margin-left:-10px;
+position:relative;
+}
+
+#leftBox {
+	border:1px solid transparent;
+	background:url("paper4.jpg");
+	width:20%;
+	height:auto;
+	margin:2%;
+	float:left;
+	border-radius:10px;
+}
+
+#rightBox {
+	border:1px solid transparent;
+	background:url("paper4.jpg");
+	width:30%;
+	height:auto;
+	margin:2%;
+	float:right;
+	border-radius:10px;
+}
+
+.margin {
+	margin:2%;
+}
+
+.boldText {
+	font-weight:bold;
+	color:brown;
+}
+
+label {
+		font-family: cursive;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: small-caps;
+	font-weight: bold;
+	line-height: 13px;
+}
+
+p {
+	font-family: cursive;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: small-caps;
+	font-weight: bold;
+	line-height: 13px;
+}
+
+#salaryButton {
+	width:80%;
+	margin-left:5%;
+}
+
+#closeBox {
+	text-align:right;
+	margin:2%;
+}
+
+#bgImage {
+	position:absolute;
+	height:100%;
+	weight:100%;
+	
+background:url('pinoy1.jpg') -25px -50px;
+position:fixed ;
+top:0;
+width:100%;
+z-index:0;
+height:100%;
+background-size: calc(100% + 50px);
+margin-left:-10px;
+opacity: 0.4; 
+filter: alpha(opacity=10);
+}

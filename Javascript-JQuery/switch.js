@@ -52,3 +52,19 @@ function testCheckBox() {
 	}
 	
 }
+
+function testListBox() {
+	var color = document.getElementById("colors");
+	
+	switch(color.selectedIndex) {
+		case 0: alert("Red");
+		break;
+		case 1: alert("Blue");
+		break;
+		case 2: alert("Green");
+		break;
+		case 3: alert("Yellow");
+		break;
+		default: alert("ERROR");
+	}
+}

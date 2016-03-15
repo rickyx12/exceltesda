@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Payroll</title>
+		<link rel="stylesheet" href="payroll.css"></link>
+	</head>
+	<body>
+		<script language="javascript" src="portfolio.js"></script>
+		<script language="javascript" src="jquery-2.1.4.min.js"></script>
+		
+		<script>
+			$(document).ready(function() {
+				$("#rightBox").hide();
+				$("#leftBox").hide();
+				$("#leftBox").fadeIn(2000);
+			});
+			
+		</script>
+		
+		<div id="bgImage"></div>
+		
+		<div id="mainBox">
+		<br><br>
+		<div id="leftBox">
+		<br>	
+		<input type="text" placeholder="Name" class="margin" id="employeeName">
+		<br>
+		<input type="text" placeholder="Days of work" class="margin" id="daysWork">
+		<br>
+		<select class="margin" id="empType">
+			<option>Regular</option>
+			<option>Casual</option>
+		</select>
+		<br><br>
+		<label class="margin">Position</label>
+		<Br>
+		<input type="radio" name="position" class="margin" id="clerk"><label>Clerk (Rate: 450)</label>
+		<Br>
+		<input type="radio" name="position" class="margin" id="supervisor"><label>Supervisor (Rate: 600)</label>
+		<br>
+		<input type="radio" name="position" class="margin" id="manager"><label>Manager: (Rate: 700)</label>
+		<br><br>
+		<input type="text" placeholder="overtime" class="margin" id="overTime">
+		<br><br><br>
+		<label class="margin">Deduction</label>
+		<br>
+		<input type="checkbox" class="margin" id="mySSS"> <label class="margin">SSS (5% of Gross)</label>
+		<br>
+		<input type="checkbox" class="margin" id="myTax"> <label class="margin">TAX (10% of Gross)</label>
+		<br><br>
+		<input type="button" value="Get Salary" id="salaryButton" class="margin" onclick="compute()">
+		<Br><br>
+		</div>
+		
+		
+		<div id="rightBox">
+			<div id="closeBox"><a href="#" id="closeButton"><img src="close.png" width="20px" height="20px"></a></div>
+			<label class="margin">Name</label><p class="margin boldText" id="result_employeeName"></p>
+			
+			<label class="margin">Days of Work</label><p class="margin boldText" id="result_daysWork"></p>
+			
+			<label class="margin">Employee Type</label><p class="margin boldText" id="result_empType"></p>
+
+			<label class="margin">Position</label><p class="margin boldText" id="result_position"></p>
+			
+			<label class="margin">Gross Pay</label><p class="margin boldText" id="result_grossPay"></p>
+			
+			<label class="margin">Overtime</label><p class="margin boldText" id="result_overtime"></p>
+			
+			<label class="margin">SSS</label><p class="margin boldText" id="result_sss"></p>
+			
+			<label class="margin">Tax</label><p class="margin boldText" id="result_tax"></p>
+			
+			<label class="margin">Bonus</label><p class="margin boldText" id="result_bonus"></p>
+			
+			<label class="margin">Net Pay</label><p class="margin boldText" id="result_netPay"></p>
+			
+		</div>
+		</div>
+		
+			<script>
+			
+				var movementStrength = 25;
+				var height = movementStrength / $(window).height();
+				var width = movementStrength / $(window).width();
+				$("#bgImage").mousemove(function(e){
+				var pageX = e.pageX - ($(window).width() / 2);
+				var pageY = e.pageY - ($(window).height() / 2);
+				var newvalueX = width * pageX * -1 - 25;
+				var newvalueY = height * pageY * -1 - 50;
+				$('#bgImage').css("background-position", newvalueX+"px     "+newvalueY+"px");
+				});
+				
+				$("#salaryButton").click(function() {
+					$("#rightBox").fadeIn(3000);
+				});
+				
+				$("#closeButton").click(function() {
+					$("#rightBox").fadeOut(5000);
+				});
+				
+			</script>
+		
+	</body>
+</html>
