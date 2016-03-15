@@ -22,12 +22,11 @@ function getElapsedTime() {
 	if(endTime_hr == startTime_hr) { //if same hour
 		elapseTime = elapsedTime_min;
 	}else if(endTime_min == 00 && startTime_min == 00) { //if both has exact time
-		elapseTime = elapsedTime_hr
+		elapseTime = elapsedTime_hr*60;
 	}
 	else {
 		elapseTime = elapsedTime_min+60;
 	}
-	
 	//document.write(elapseTime);
 	return elapseTime;
 	
