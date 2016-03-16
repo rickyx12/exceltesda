@@ -8,7 +8,6 @@ $(function() {
 		
 		var imgSrc = $(this).attr("src");
 		currentIndex = $(this).parent();
-		
 		$("#main").attr("src",imgSrc);
 		$("#overlay").fadeIn(2000);
 		$("#frame").show(2500);

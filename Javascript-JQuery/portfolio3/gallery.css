@@ -1,0 +1,44 @@
+#bigPhoto {
+	border:0px solid red;
+	width:80%;
+	height:400px;
+}
+
+#smallPhoto {
+	border:1px solid green;
+	width:80%;
+	height:130px;
+}
+
+.thumbnail {
+	width:130px;
+	height:100px;
+	opacity:.5
+}
+
+.thumbnail1 {
+	width:130px;
+	height:100px;
+	opacity:1
+}
+
+ul li {
+	list-style-type: none;
+	display:inline;
+}
+
+#bigPhotoIMG {
+	margin:2%;
+	width:80%;
+	height:90%;
+}
+
+#right {
+	color:red;
+	text-decoration:none;
+}
+
+#left {
+	color:blue;
+	text-decoration:none;
+}
