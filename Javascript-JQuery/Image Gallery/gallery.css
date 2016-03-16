@@ -1,0 +1,68 @@
+#header{
+	background:black;
+	width:100%;
+	height:50px;
+	margin-top:-20px;
+}
+
+h2 {
+	color:white;
+	text-align:center;
+}
+
+ul li {
+	list-style-type:none;
+	display:inline;
+}
+
+ul li img {
+	width:220px;
+	height:140px
+}
+
+#overlay {
+	width:100%;
+	height:700px;
+	background:black;
+	position:fixed;
+	opacity:.7;
+	display:none;
+}
+
+#frame {
+	background:white;
+	width:40%;
+	height:400px;
+	position:fixed;
+	opacity:10;
+	margin-top:80px;
+	margin-left:25%;
+}
+
+#main {
+	width:80%;
+	height:80%;
+	margin:8%;
+}
+
+.arrow {
+	width:30px;
+	height:30px;
+}
+
+#left{
+	width:50px;
+	height:50px;
+	position:fixed;
+	margin-left:-435px;
+	margin-top:150px;	
+
+}
+
+#right{
+	width:50px;
+	height:50px;
+	position:fixed;
+	margin-left:5px;
+	margin-top:150px;	
+}
