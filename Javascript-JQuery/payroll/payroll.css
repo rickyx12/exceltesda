@@ -1,0 +1,131 @@
+body {
+	overflow:hidden;
+}
+
+#orderForm {
+	border:0px solid red;
+	width:35%;
+	height:500px;
+	margin:2%;
+	padding:2%;
+	float:left;
+	background:url("paper.jpg");
+	border-radius:5%;
+	position:relative;
+}
+
+#receipt {
+	border:0px solid green;
+	width:40%;
+	height:500px;
+	margin:2%;
+	padding:2%;
+	float:right;
+	background:url("paper.jpg");
+	border-radius:5%;
+	position:relative;
+	
+}
+
+#receipt table {
+	width:100%;
+}
+
+#receipt table td {
+	width: 50%;
+}
+
+h3 {
+	margin:0%;
+}
+
+#addons {
+	width:50%;
+	margin:5%;
+}
+
+#discountTable {
+	width:100%;
+}
+
+#billButton {
+	width:20%;
+	margin:auto;
+	background:#6d0a3a;
+	border:0px;
+	border-radius:15%;
+	color:white;
+	float:right;
+} 
+
+.receiptLabel {
+	font-weight:bold;
+	margin-right:2%;
+}
+
+#closeButton {
+	float:right;
+}
+
+label {
+	font-family: cursive;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: small-caps;
+	font-weight: bold;
+	line-height: 13px;
+}
+
+#backgroundDIV1 {
+	width:100%;
+	height:650px;
+	background:url("smile.jpg");
+	background-position:center;
+	position:absolute;
+	position:fixed; 
+	background-size: calc(100% + 50px);
+	margin-top:5%;
+	margin-left:-9px;
+}
+
+#backgroundDIV {
+	width:100%;
+	height:700px;
+	background-color:#4285f4;
+	position:absolute;
+	position:fixed; 
+	opacity:.5;
+	z-index:0;
+	filter: alpha(opacity=10);
+	margin-left:-8px;
+	margin-top:-10px;
+	margin-bottom:-10px;
+	//background-size: calc(100% + 50px);
+	
+}
+
+.txtBox {
+	width:30%;
+}
+
+#header{
+	position:relative;
+	width:110%;
+	height:60px;
+	background:#470d6f;
+	margin-left:-10px;
+	margin-top:-10px;
+}
+
+#headerText {
+	color:white;
+	font-family: cursive;
+	font-variant: small-caps;
+	font-weight: bold;
+	font-size:25px;
+	margin-left:5%;
+}
+
+.tableRow {
+	width:100%;
+}

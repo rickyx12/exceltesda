@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Payroll</title>
+		<link rel="stylesheet" href="payroll.css"></link>
+		<script language="javascript" src="jquery-2.1.4.min.js"></script>
+		<script language="javascript" src="payroll.js"></script>
+	</head>
+	<body>
+	
+		<div id="backgroundDIV1">
+		
+		</div>
+		<div id="backgroundDIV">
+	
+		</div>
+		
+		<div id="header"><font id="headerText">ABC Payroll System</font></div>
+		<div id="orderForm">
+			
+			<table id="orderFormTable">
+				<tr>
+					<td>
+						<label>Customer Name</label>
+					</td>
+					<td>
+						<input type="text" id="customerName_input">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Number</label>
+					</td>
+					<td>
+						<input type="text" id="customerNumber_input">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" id="salmonBellyCB"> <label>Salmon Belly</label>
+					</td>
+					<td>
+						<input type="textbox" class="txtBox" id="salmonBellyTB">  <label>Php 250</label>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<input type="checkbox" id="roastBeefCB"> <label>Roast Beef</label>
+					</td>
+					<td>
+						<input type="textbox" class="txtBox" id="roastBeefTB">  <label>Php 300</label>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<input type="checkbox" id="tboneSteakCB"> <label>T-Bone steak</label>
+					</td>
+					<td>
+						<input type="textbox" class="txtBox" id="tboneSteakTB">  <label>Php 280</label>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<input type="checkbox" id="ribeyeSteakCB"> <label>Rib-eye steak</label>
+					</td>
+					<td>
+						<input type="textbox" class="txtBox" id="ribeyeSteakTB">  <label>Php 320</label>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<input type="checkbox" id="wagyuBeefCB"> <label>Wagyu Beef</label>
+					</td>
+					<td>
+						<input type="textbox" class="txtBox" id="wagyuBeefTB">  <label>Php 350</label>
+					</td>
+				</tr>				
+			</table>
+			<hr>
+			<h3>
+				Addons
+			</h3>
+			<table id="addons">
+				<tr>
+					<td><input type="checkbox" id="rice"><label>W/ Rice</label></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="drinks"><label>W/ Drinks</label></td>
+				</tr>
+			</table>
+			<hr>
+			<h3>
+				Discount
+			</h3>
+			<table id="discountTable">
+				<tr>
+					<td><input type="radio" name="discount" id="seniorCitizen"><label>Senior Citizen</label></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="discount" id="loyalty"><label>Loyalty Discount</label></td>
+				</tr>
+				<Tr>
+					<td><input type="radio" name="discount" id="birthday"><label>Birthday Discount</label></td>
+				</tr>
+			</table>
+			<Br><br>
+			<input type="button" id="billButton" value="BiLL   >>">
+			
+		</div>
+		
+		
+		<div id="receipt">
+			<a href="#" id="closeButton"><img src="close.png"></img></a>
+			<table id="tableReceipt">
+				<tr id="customerNameRow">
+					<td id="tableLabel">
+						<label class="receiptLabel">Customer:</label>
+					</td>
+					<td>
+						<label id="customerName_output"></label>
+					</td>
+				</tr>
+				<tr id="customerNumberRow">
+					<td class="tableLabel">
+						<label class="receiptLabel">Number:</label>
+					</td>
+					<td>
+						<label id="customerNumber_output"></label>
+					</td>
+				</tr>
+				<tr id="salmonBellyRow">
+					<td class="tableLabel">
+						<label class="receiptLabel" id="salmonBellyLabel">Salmon Belly</label>
+					</td>
+					<td>
+						<label id="salmonBelly_output"></label>
+					</td>
+				</tr>
+				<tr id="roastBeefRow">
+					<td class="tableLabel">
+						<label class="receiptLabel" id="roastBeefLabel">Roast Beef</label>
+					</td>
+					<td>
+						<label id="roastBeef_output"></label>
+					</td>
+				</tr>
+				<tr id="tboneSteakRow">
+					<td class="tableLabel">
+						<label class="receiptLabel">T-Bone Steak</label>
+					</td>
+					<td>
+						<label id="tboneSteak_output"></label>
+					</td>
+				</tr>
+				<tr id="ribeyeSteakRow">
+					<td class="tableLabel">
+						<label class="receiptLabel">RibEye Steak</label>
+					</td>
+					<td>
+						<label id="ribeyeSteak_output"></label>
+					</td>
+				</tr>
+				<tr id="wagyuBeefRow">
+					<td class="tableLabel">
+						<label class="receiptLabel">Wagyu Beef</label>
+					</td>
+					<td>
+						<label id="wagyuBeef_output"></label>
+					</td>
+				</tr>	
+				<tr id="riceRow">
+					<td class="tableLabel">
+						<label class="receiptLabel">Rice</label>
+					</td>
+					<td>
+						<label id="rice_output"></label>
+					</td>
+				</tr>
+				<tr id="drinksRow">
+					<td class="tableLabel">
+						<label class="receiptLabel">Drinks</label>
+					</td>
+					<td>
+						<label id="drinks_output"></label>
+					</td>
+				</tr>
+				<tr id="seniorCitizenRow">
+					<td class="tableRow">
+						<label class="receiptLabel">Senior Citizen</label>
+					</td>
+					<td>
+						<label id="seniorCitizen_output"></label>
+					</td>
+				</tr>
+				<tr id="loyaltyRow">
+					<td class="tableRow">
+						<label class="receiptLabel">Loyalty Discount</label>
+					</td>
+					<td>
+						<label id="loyalty_output"></label>
+					</td>
+				</tr>
+				<tr id="birthdayRow">
+					<td class="tableRow">
+						<label class="receiptLabel">Birthday Discount</label>
+					</td>
+					<td>
+						<label id="birthday_output"></label>
+					</td>
+				</tr>
+				<tr id="gtRow">
+					<td class="tableRow">
+						<label class="receiptLabel">Grand Total</label>
+					</td>
+					<td>
+						<label id="grandTotal_output"></label>
+					</td>
+				</tr>				
+			</table>
+		</div>
+		
+	</body>
+</html>
