@@ -15,7 +15,7 @@
 	
 		</div>
 		
-		<div id="header"><font id="headerText">ABC Payroll System</font></div>
+		<div id="header"><br><font id="headerText">ABC Bar and Restaurant</font></div>
 		<div id="orderForm">
 			
 			<table id="orderFormTable">
@@ -24,7 +24,7 @@
 						<label>Customer Name</label>
 					</td>
 					<td>
-						<input type="text" id="customerName_input">
+						<input type="text" id="customerName_input"><label class="required" id="requiredName">*required</label>
 					</td>
 				</tr>
 				<tr>
@@ -32,7 +32,7 @@
 						<label>Number</label>
 					</td>
 					<td>
-						<input type="text" id="customerNumber_input">
+						<input type="text" id="customerNumber_input"><label class="required" id="requiredContact">*required</label>
 					</td>
 				</tr>
 				<tr>
@@ -117,7 +117,7 @@
 			<a href="#" id="closeButton"><img src="close.png"></img></a>
 			<table id="tableReceipt">
 				<tr id="customerNameRow">
-					<td id="tableLabel">
+					<td class="tableLabel">
 						<label class="receiptLabel">Customer:</label>
 					</td>
 					<td>
@@ -132,6 +132,12 @@
 						<label id="customerNumber_output"></label>
 					</td>
 				</tr>
+				<tr><tD></tD><td></tD></tr>
+				<tr><tD></tD><td></tD></tr>
+				<tr><tD></tD><td></tD></tr>
+				<tr><tD></tD><td></tD></tr>
+				<tr><tD></tD><td></tD></tr>
+				<tr><tD></tD><td></tD></tr>				
 				<tr id="salmonBellyRow">
 					<td class="tableLabel">
 						<label class="receiptLabel" id="salmonBellyLabel">Salmon Belly</label>
@@ -212,11 +218,12 @@
 						<label id="birthday_output"></label>
 					</td>
 				</tr>
+				
 				<tr id="gtRow">
-					<td class="tableRow">
+					<td class="tableRow gtTD">
 						<label class="receiptLabel">Grand Total</label>
 					</td>
-					<td>
+					<td class="gtTD">
 						<label id="grandTotal_output"></label>
 					</td>
 				</tr>				

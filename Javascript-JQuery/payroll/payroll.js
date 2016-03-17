@@ -22,6 +22,8 @@ $(function(){
 	$("#birthdayRow").hide();
 	$("#gtRow").hide();
 	$("#receipt").hide();
+	$("#requiredName").hide();
+	$("#requiredContact").hide();
 	
 	var salmonBellyPrice = 250;
 	var roastBeefPrice = 300;
@@ -147,18 +149,23 @@ $(function(){
 		$("#grandTotal_output").html((totalz - disc));
 		}else { }
 	}
-	function checker(id) {
-		if($("#"+id).val() != "") {
-			$("#"+id).show();
-		}else { }
+	function checker(row,input,output,error) {
+		if($("#"+input).val() != "") {
+			$("#"+row).show();
+			$("#"+output).html($("#"+input).val());
+			$("#orderForm").fadeOut(2000);
+			$("#receipt").fadeIn(2000);
+		}else { 
+			$("#"+input).css("border","1px solid red");
+			$("#"+error).show();
+		}
 	}
 			
 	
 	$("#billButton").click(function(){
-		$("#receipt").fadeIn(2000);
-		checker("customerNameRow")
-		checker("customerNumberRow");
-		$("#customerName_output").html($("#customerName_input").val());
+		checker("customerNameRow","customerName_input","customerName_output","requiredName");
+		checker("customerNumberRow","customerNumber_input","customerNumber_output","requiredContact");
+		//$("#customerName_output").html($("#customerName_input").val());
 		$("#customerNumber_output").html($("#customerNumber_input").val());
 		show("salmonBelly",salmonBellyPrice);
 		show("roastBeef",roastBeefPrice);
@@ -171,9 +178,9 @@ $(function(){
 		discount("loyalty",loyalty,total);
 		discount("birthday",bday,total);
 		grandTotal(total,getDiscount);	
-			total = 0;
-			getDiscount = 0;
-		$("#orderForm").fadeOut(2000);
+			total = 0; //zero kc kpg nag click aq ng sunod sunod nag iincrement sya kea nireset q sa 0
+			getDiscount = 0; //zero kc kpg nag click aq ng sunod sunod nag iincrement sya kea nireset q sa 0
+		
 	});
 	
 	

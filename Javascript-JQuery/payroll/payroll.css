@@ -16,7 +16,7 @@ body {
 
 #receipt {
 	border:0px solid green;
-	width:40%;
+	width:30%;
 	height:500px;
 	margin:2%;
 	padding:2%;
@@ -31,9 +31,7 @@ body {
 	width:100%;
 }
 
-#receipt table td {
-	width: 50%;
-}
+
 
 h3 {
 	margin:0%;
@@ -74,6 +72,7 @@ label {
 	font-variant: small-caps;
 	font-weight: bold;
 	line-height: 13px;
+	
 }
 
 #backgroundDIV1 {
@@ -115,6 +114,7 @@ label {
 	background:#470d6f;
 	margin-left:-10px;
 	margin-top:-10px;
+	font-style:italic;
 }
 
 #headerText {
@@ -126,6 +126,15 @@ label {
 	margin-left:5%;
 }
 
-.tableRow {
-	width:100%;
+.tableLabel {
+	width:30%;
+	//border:1px solid red;
+}
+
+.gtTD {
+	border-top:1px solid red;
+}
+
+.required {
+	color:red;
 }
