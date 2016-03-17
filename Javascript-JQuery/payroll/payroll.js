@@ -23,7 +23,6 @@ $(function(){
 	$("#gtRow").hide();
 	$("#receipt").hide();
 	$("#requiredName").hide();
-	$("#requiredContact").hide();
 	
 	var salmonBellyPrice = 250;
 	var roastBeefPrice = 300;
@@ -160,11 +159,20 @@ $(function(){
 			$("#"+error).show();
 		}
 	}
+	
+	function number(input,row) {
+		if($("#"+input).val() != "") {
+			$("#"+row).show();
+		}else {
+			$("#"+row).hide();
+		}
+	}
 			
 	
 	$("#billButton").click(function(){
 		checker("customerNameRow","customerName_input","customerName_output","requiredName");
-		checker("customerNumberRow","customerNumber_input","customerNumber_output","requiredContact");
+		number("customerNumber_input","customerNumberRow");
+		//checker("customerNumberRow","customerNumber_input","customerNumber_output","requiredContact");
 		//$("#customerName_output").html($("#customerName_input").val());
 		$("#customerNumber_output").html($("#customerNumber_input").val());
 		show("salmonBelly",salmonBellyPrice);
