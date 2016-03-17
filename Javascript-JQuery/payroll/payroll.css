@@ -31,15 +31,12 @@ body {
 	width:100%;
 }
 
-
-
 h3 {
 	margin:0%;
 }
 
 #addons {
-	width:50%;
-	margin:5%;
+	margin:0%;
 }
 
 #discountTable {
@@ -78,12 +75,13 @@ label {
 #backgroundDIV1 {
 	width:100%;
 	height:650px;
-	background:url("smile.jpg");
+	background:url("boodle.jpg");
 	background-position:center;
 	position:absolute;
 	position:fixed; 
 	background-size: calc(100% + 50px);
-	margin-top:5%;
+	background-repeat:repeat-x;
+	margin-top:1%;
 	margin-left:-9px;
 }
 
@@ -104,13 +102,13 @@ label {
 }
 
 .txtBox {
-	width:30%;
+	width:10%;
 }
 
 #header{
 	position:relative;
 	width:110%;
-	height:60px;
+	height:	25%;
 	background:#470d6f;
 	margin-left:-10px;
 	margin-top:-10px;
@@ -137,4 +135,10 @@ label {
 
 .required {
 	color:red;
+}
+
+#logo {
+	width:20px;
+	height:20px;
+	margin-left:5%; 
 }

@@ -15,7 +15,7 @@
 	
 		</div>
 		
-		<div id="header"><br><font id="headerText">ABC Bar and Restaurant</font></div>
+		<div id="header"><font id="headerText">ABC Bar and Restaurant</font></div>
 		<div id="orderForm">
 			
 			<table id="orderFormTable">
@@ -37,7 +37,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="checkbox" id="salmonBellyCB"> <label>Salmon Belly</label>
+						<input type="checkbox" id="salmonBellyCB" class="tooltip"> <label>Salmon Belly</label>
 					</td>
 					<td>
 						<input type="textbox" class="txtBox" id="salmonBellyTB">  <label>Php 250</label>
@@ -86,10 +86,10 @@
 			</h3>
 			<table id="addons">
 				<tr>
-					<td><input type="checkbox" id="rice"><label>W/ Rice</label></td>
+					<td><input type="checkbox" class="addons" id="rice"><label>W/ Rice</label></td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" id="drinks"><label>W/ Drinks</label></td>
+					<td><input type="checkbox" class="addons" id="drinks"><label>W/ Drinks</label></td>
 				</tr>
 			</table>
 			<hr>
@@ -98,13 +98,13 @@
 			</h3>
 			<table id="discountTable">
 				<tr>
-					<td><input type="radio" name="discount" id="seniorCitizen"><label>Senior Citizen</label></td>
+					<td><input type="radio" name="discount" class="discount" id="seniorCitizen"><label>Senior Citizen</label></td>
 				</tr>
 				<tr>
-					<td><input type="radio" name="discount" id="loyalty"><label>Loyalty Discount</label></td>
+					<td><input type="radio" name="discount" class="discount" id="loyalty"><label>Loyalty Discount</label></td>
 				</tr>
 				<Tr>
-					<td><input type="radio" name="discount" id="birthday"><label>Birthday Discount</label></td>
+					<td><input type="radio" name="discount" class="discount" id="birthday"><label>Birthday Discount</label></td>
 				</tr>
 			</table>
 			<Br><br>
@@ -192,6 +192,14 @@
 					</td>
 					<td>
 						<label id="drinks_output"></label>
+					</td>
+				</tr>
+				<tr id="totalRow">
+					<td class="tableLabel">
+						<label class="receiptLabel">Total</label>
+					</td>
+					<td>
+						<label id="total_output"></label>
 					</td>
 				</tr>
 				<tr id="seniorCitizenRow">
