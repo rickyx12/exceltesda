@@ -48,8 +48,7 @@ mysql> select (max(sal) - min(sal)) as DIFFERENCE from emp;
 
 
 SOLUTION 14
-mysql> select mgr,min(sal) from emp where mgr is not null group by mgr having mi
-n(sal) > 1000;
+mysql> select mgr,min(sal) from emp where mgr is not null group by mgr having min(sal) > 1000;
 +------+----------+
 | mgr  | min(sal) |
 +------+----------+
