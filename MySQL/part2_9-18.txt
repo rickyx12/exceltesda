@@ -1,0 +1,129 @@
+SOLUTON 9
+mysql> select deptno,max(sal) from emp where sal > 2900 and deptno is not null group by deptno;
++--------+----------+
+| deptno | max(sal) |
++--------+----------+
+|     20 |     3000 |
++--------+----------+
+1 row in set (0.00 sec)
+
+
+
+SOLUTION 10
+mysql> select job,sum(sal) from emp where job != 'Salesman' group by job having
+    -> sum(sal) > 5000;
++---------+----------+
+| job     | sum(sal) |
++---------+----------+
+| Analyst |     6000 |
+| Manager |     8275 |
++---------+----------+
+2 rows in set (0.00 sec)
+
+
+SOLUTION 12
+mysql> select job,min(sal),max(sal),sum(sal),avg(sal) from emp group by job;
++-----------+----------+----------+----------+-----------+
+| job       | min(sal) | max(sal) | sum(sal) | avg(sal)  |
++-----------+----------+----------+----------+-----------+
+| Analyst   |     3000 |     3000 |     6000 | 3000.0000 |
+| Clerk     |      800 |     1300 |     4150 | 1037.5000 |
+| Manager   |     2450 |     2975 |     8275 | 2758.3333 |
+| President |     5000 |     5000 |     5000 | 5000.0000 |
+| Salesman  |     1250 |     3000 |     7350 | 1837.5000 |
++-----------+----------+----------+----------+-----------+
+5 rows in set (0.00 sec)
+
+
+
+SOLUTION 13
+mysql> select (max(sal) - min(sal)) as DIFFERENCE from emp;
++------------+
+| DIFFERENCE |
++------------+
+|       4200 |
++------------+
+1 row in set (0.00 sec)
+
+
+
+SOLUTION 14
+mysql> select mgr,min(sal) from emp where mgr is not null group by mgr having mi
+n(sal) > 1000;
++------+----------+
+| mgr  | min(sal) |
++------+----------+
+| 7566 |     3000 |
+| 7782 |     1300 |
+| 7788 |     1100 |
+| 7839 |     2450 |
++------+----------+
+4 rows in set (0.00 sec)
+
+
+SOLUTION 15
+mysql> select e.ename,e.deptno,d.dname from emp e,dept d where e.deptno = d.dept
+no;
++--------+--------+------------+
+| ename  | deptno | dname      |
++--------+--------+------------+
+| Blake  |     30 | Sales      |
+| Clark  |     10 | Accounting |
+| Jones  |     20 | Research   |
+| Martin |     30 | Sales      |
+| Allen  |     30 | Sales      |
+| Turner |     30 | Sales      |
+| James  |     30 | Sales      |
+| Ward   |     20 | Research   |
+| Ford   |     20 | Research   |
+| Smith  |     20 | Research   |
+| Scott  |     20 | Research   |
+| Adams  |     20 | Research   |
+| Miller |     10 | Accounting |
++--------+--------+------------+
+13 rows in set (0.00 sec)
+
+
+SOLUTION 16
+mysql> select job,d.loc from emp e,dept d where e.deptno = 30 and e.deptno = d.d
+eptno;
++----------+---------+
+| job      | loc     |
++----------+---------+
+| Manager  | Chicago |
+| Salesman | Chicago |
+| Salesman | Chicago |
+| Salesman | Chicago |
+| Clerk    | Chicago |
++----------+---------+
+5 rows in set (0.00 sec)
+
+
+SOLUTION 17
+mysql> select e.ename,d.dname,d.loc from emp e,dept d where e.deptno = d.deptno
+    -> and e.comm is not null;
++--------+-------+---------+
+| ename  | dname | loc     |
++--------+-------+---------+
+| Martin | Sales | Chicago |
+| Allen  | Sales | Chicago |
+| Turner | Sales | Chicago |
++--------+-------+---------+
+3 rows in set (0.00 sec)
+
+
+SOLUTION 18
+mysql> select e.ename,d.dname from emp e,dept d where e.deptno = d.deptno and e.
+    -> ename like '%A%';
++--------+------------+
+| ename  | dname      |
++--------+------------+
+| Blake  | Sales      |
+| Clark  | Accounting |
+| Martin | Sales      |
+| Allen  | Sales      |
+| James  | Sales      |
+| Ward   | Research   |
+| Adams  | Research   |
++--------+------------+
+7 rows in set (0.00 sec)
