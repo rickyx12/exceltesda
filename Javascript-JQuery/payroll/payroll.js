@@ -106,7 +106,9 @@ $(function(){
 			$("#"+order+"Row").show();
 			$("#"+order+"_output").html( "Php "+getTotal(getQTY(order+"TB"),price)  );
 			total += parseInt(getTotal(getQTY(order+"TB"),price));
-		}else { }
+		}else { 
+			$("#"+order+"Row").hide();
+		}
 	
 	
 	}
