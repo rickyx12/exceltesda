@@ -1,0 +1,184 @@
+
+SOLUTION 1:
+mysql> select ename,sal from emp where sal > 2850;
++-------+------+
+| ename | sal  |
++-------+------+
+| King  | 5000 |
+| Jones | 2975 |
+| Ward  | 3000 |
+| Ford  | 3000 |
+| Scott | 3000 |
++-------+------+
+5 rows in set (0.00 sec)
+
+
+
+SOLUTION 2:
+mysql> select ename,job,hiredate from emp where hiredate between '1981-02-20' an
+d '1981-05-01' order by hiredate asc;
++-------+----------+------------+
+| ename | job      | hiredate   |
++-------+----------+------------+
+| Allen | Salesman | 1981-02-20 |
+| Ward  | Salesman | 1981-02-22 |
+| Jones | Manager  | 1981-04-02 |
+| Blake | Manager  | 1981-05-01 |
++-------+----------+------------+
+4 rows in set (0.00 sec)
+
+
+
+SOLUTION 3:
+mysql> select ename as Employee,sal as Monthly_Salary from emp where sal > 1500
+    -> and deptno = 10 or deptno = 30;
++----------+----------------+
+| Employee | Monthly_Salary |
++----------+----------------+
+| Blake    |           2850 |
+| Clark    |           2450 |
+| Martin   |           1250 |
+| Allen    |           1600 |
+| Turner   |           1500 |
+| James    |            950 |
++----------+----------------+
+6 rows in set (0.01 sec)
+
+
+
+SOLUTION 4:
+mysql> select ename,job from emp where mgr is null;
++-------+-----------+
+| ename | job       |
++-------+-----------+
+| King  | President |
++-------+-----------+
+1 row in set (0.00 sec)
+
+
+
+SOLUTION 5:
+mysql> select ename,sal,comm from emp where comm is not null order by comm desc;
+
++--------+------+------+
+| ename  | sal  | comm |
++--------+------+------+
+| Martin | 1250 | 1400 |
+| Allen  | 1600 |  300 |
+| Turner | 1500 |    0 |
++--------+------+------+
+3 rows in set (0.00 sec)
+
+
+SOLUTION 6:
+mysql> select ename from emp where ename like '__a%';
++-------+
+| ename |
++-------+
+| Blake |
+| Clark |
+| Adams |
++-------+
+3 rows in set (0.01 sec)
+
+
+SOLUTION 7:
+mysql> select ename from emp where ename like '%L%L%' and deptno = 30;
++-------+
+| ename |
++-------+
+| Allen |
++-------+
+1 row in set (0.00 sec)
+
+
+SOLUTION 8:
+mysql> select ename,job,sal from emp where (job = 'Clerk' or job = 'Analyst') an
+d sal not in (1000,3000,5000);
++--------+-------+------+
+| ename  | job   | sal  |
++--------+-------+------+
+| James  | Clerk |  950 |
+| Smith  | Clerk |  800 |
+| Adams  | Clerk | 1100 |
+| Miller | Clerk | 1300 |
++--------+-------+------+
+4 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TO BE CONTINUED
+
+
+
+SOLUTION 9:
+select deptno,max(sal) from emp where sal > 2900 group by deptno;
+
+
+
+SOLUTION 10:
+select job,sum(sal) from emp where job != 'Salesman' group by job having
+sum(sal) > 5000;
+
+
+
+SOLUTION 11:
+select max(avgSal) from (select avg(sal) as avgSal from emp group by job) as avgSalary;
+
+
+SOLUTION 12:
+select min(sal),max(sal),sum(sal),avg(sal) from emp group by job;
+
+
+
+SOLUTION 13:
+select (max(sal) - min(sal)) as DIFFERENCE from emp;
+
+
+SOLUTION 14:
+select mgr,min(sal) from emp where mgr is not null group by mgr having min(sal) > 1000;
+
+
+
+SOLUTION 15:
+select e.ename,e.deptno,d.dname from emp e,dept d where e.deptno = d.deptno;
+
+
+
+SOLUTION 16:
+select job,d.loc from emp e,dept d where e.deptno = 30 and e.deptno = d.deptno;
+
+
+
+SOLUTION 17:
+select e.ename,d.dname,d.loc from emp e,dept d where e.deptno = d.deptno
+and e.comm is not null;
+
+
+
+SOLUTION 18:
+select e.ename,d.dname from emp e,dept d where e.deptno = d.deptno and e.
+ename like '%A%';
+
