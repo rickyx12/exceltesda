@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+	<head>
+		<title>AJAX Sample</title>
+		<script language="javascript" src="jquery-2.1.4.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			$("#btnSearch").click(function(){
+				$.post("home.php",function(data) {
+					$("#result").html(data);
+				});
+			});
+		});
+		</script>
+		
+	</head>
+	<body>
+		<input type="text" placeholder="search" id="search"></input>
+		<input type="button" type="button" id="btnSearch" value="SEARCH">
+		<Br>
+		<div id="result"></div>
+	</body>
+</html>
