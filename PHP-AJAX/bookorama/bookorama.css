@@ -1,16 +1,41 @@
+
+html{
+	background: url("cat.jpg");
+	width: :100vw;
+	height:100vh;
+	background-size: calc(100%);
+	margin:-5;
+}
+
+#loginbox_opacity {
+	//border:1px solid red;
+	width:30%;
+	height:150px;
+	margin:2%;
+	padding:2%;
+	float:left;
+	background:violet;
+	opacity: .5;
+	position: absolute;
+}
+
 #loginbox {
-	border:1px solid red;
+	//border:1px solid red;
 	width:30%;
 	height:100px;
 	margin:2%;
 	padding:2%;
 	float:left;
+	background:transparent;
+	position: relative;
 }
 
 
+
 .loginTextBox {
-	width:80%;
+	width:50%;
 	margin-bottom:1%;
+	border:1p;
 }
 
 #loginBtn {
@@ -19,17 +44,37 @@
 }
 
 #signup {
-	color:blue;
+	color:red;
+	font-weight: :bold;
 	text-decoration:none;
 }
 
-#signupBox {
-	border:1px solid blue;
+#signupBox_opacity {
+	//border:1px solid blue;
 	width:40%;
-	height:150px;
+	height:170px;
 	float:left;
 	padding:2%;
 	display:none;
+	background:violet;
+	margin:2%;
+	opacity: .4;
+	position: absolute;
+
+}
+
+#signupBox {
+	//border:1px solid blue;
+	width:40%;
+	height:200px;
+	float:left;
+	padding:2%;
+	display:none;
+	background:transparent;
+	margin:2%;
+	position: relative;
+
+
 }
 
 #error {

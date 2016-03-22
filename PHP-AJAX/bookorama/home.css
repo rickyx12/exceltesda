@@ -1,7 +1,35 @@
-#nav {
-	border:1px solid red;
-	width:100%;
+
+html{
+	background: url("cat.jpg");
+	width: :100vw;
+	height:100vh;
+	background-size: calc(100%);
+	margin:-5;
+	overflow: hidden;
+}
+
+
+#transprnt {
+	//border:1px solid red;
+	width:100.8%;
 	height:50px;
+	margin-top:-6px;
+	margin-left: -6px;
+	background:violet;
+	opacity: .5;
+	position: absolute;
+
+}
+
+#nav {
+	//border:1px solid red;
+	width:100.8%;
+	height:50px;
+	margin-top:-6px;
+	margin-left: -6px;
+	background:transparent;
+	position:relative;
+
 }
 
 #logout {
@@ -9,7 +37,7 @@
 	color:red;
 	float:right;
 	margin-right:2%;
-	margin-top:2%;
+	margin-top:1%;
 }
 
 #title {
@@ -17,7 +45,7 @@
 	color:red;
 	float:left;
 	margin-left:2%;
-	margin-top:2%;
+	margin-top:1%;
 }
 
 .nav {
@@ -25,29 +53,47 @@
 	color:red;
 	float:left;
 	margin-left:2%;
-	margin-top:2%;
+	margin-top:1%;
 }
 
 
-#leftContainer {
+#leftContainer_opacity {
 	//border:1px solid green;
-	height:200px;
+	height:150px;
 	width:30%;
 	float:left;
+	background:pink;
+	opacity:.4 ;
+	position: absolute;
+	border-radius: 25px;
+}
+
+#leftContainer {
+	//border:1px solid green;
+	height:auto;
+	width:30%;
+	float:left;
+	background:transparent;
+	position:relative;
+	margin:2%;
 }
 
 #rightContainer {
 	//border:1px solid brown;
-	height:500px;
-	width:50%;
+	height:auto;
+	padding:auto;
+	width:45%;
 	float:right;
 	margin-right:7%;
 	//padding-top:5%;
-	//background:black;
+	background:yellow;
+	opacity: .5;
+	display:none;
+	
 }
 
 #searchBox {
-	margin:5%;
+	margin:2%;
 	width:80%;
 }
 
@@ -57,7 +103,7 @@
 
 #searchBtn {
 	margin:5%;
-	width:80%;
+	width:20%;
 }
 
 #bookTable {
@@ -68,7 +114,7 @@
 	background-color:white;
 }
 
-tr:hover {
+ tr:hover {
 	background-color:yellow;
 	color:black;
 }
@@ -76,4 +122,8 @@ tr:hover {
 #bookTable, th, td {
 	border:1px solid green;
 	margin:2%;
+}
+
+#closeResult {
+	float:right;
 }
