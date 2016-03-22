@@ -1,0 +1,37 @@
+#loginbox {
+	border:1px solid red;
+	width:30%;
+	height:100px;
+	margin:2%;
+	padding:2%;
+	float:left;
+}
+
+
+.loginTextBox {
+	width:80%;
+	margin-bottom:1%;
+}
+
+#loginBtn {
+	width:30%;
+	margin:auto;
+}
+
+#signup {
+	color:blue;
+	text-decoration:none;
+}
+
+#signupBox {
+	border:1px solid blue;
+	width:40%;
+	height:150px;
+	float:left;
+	padding:2%;
+	display:none;
+}
+
+#error {
+	margin:2%;
+}

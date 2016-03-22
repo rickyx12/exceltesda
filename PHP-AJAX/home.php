@@ -1,8 +1,9 @@
 <?php
 include "dbConnect.php";
 
+$studid = $_POST['studid'];
 
-$sql = "SELECT * from studinfo";
+$sql = "SELECT * from studinfo where course like '$studid%'";
 
 $result = mysql_query($sql,$conn) or die(mysql_error());
 

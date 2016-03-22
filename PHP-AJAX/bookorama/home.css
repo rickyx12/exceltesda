@@ -1,0 +1,79 @@
+#nav {
+	border:1px solid red;
+	width:100%;
+	height:50px;
+}
+
+#logout {
+	text-decoration:none;
+	color:red;
+	float:right;
+	margin-right:2%;
+	margin-top:2%;
+}
+
+#title {
+	text-decoration:none;
+	color:red;
+	float:left;
+	margin-left:2%;
+	margin-top:2%;
+}
+
+.nav {
+	text-decoration:none;
+	color:red;
+	float:left;
+	margin-left:2%;
+	margin-top:2%;
+}
+
+
+#leftContainer {
+	//border:1px solid green;
+	height:200px;
+	width:30%;
+	float:left;
+}
+
+#rightContainer {
+	//border:1px solid brown;
+	height:500px;
+	width:50%;
+	float:right;
+	margin-right:7%;
+	//padding-top:5%;
+	//background:black;
+}
+
+#searchBox {
+	margin:5%;
+	width:80%;
+}
+
+.searchType {
+	margin-left:5%;
+}
+
+#searchBtn {
+	margin:5%;
+	width:80%;
+}
+
+#bookTable {
+	margin:auto;
+	border:1px;
+	border-collapse:collapse;
+	width:80%;
+	background-color:white;
+}
+
+tr:hover {
+	background-color:yellow;
+	color:black;
+}
+
+#bookTable, th, td {
+	border:1px solid green;
+	margin:2%;
+}

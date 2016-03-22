@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Log In</title>
+		<script language="javascript" src="jquery-2.1.4.min.js"></script>
+		<script language="javascript" src="bookorama.js"></script>
+		<link rel="stylesheet" href="bookorama.css"></link>
+	</head>
+	<body>
+		<div id="loginbox">
+			<input type="text" class="loginTextBox" autocomplete="off" id="username" placeholder="Username">
+			<br>
+			<input type="Password" class="loginTextBox" id="password" placeholder="Password">
+			<Br>
+			<input type="button" id="loginBtn" value="Login">
+			<br>
+			<br>
+			<label>Not Register? </label> <a href="#" id='signup'>Signup</a>
+			<Br>
+			<div id="error"></div>
+		</div>
+		
+		<div id='signupBox'>
+			<div id="errmsg"></div>
+			<input type="text" class="loginTextBox" autocomplete="off" id="usernameSignup" placeholder="Username">
+			<br>
+			<input type="Password" class="loginTextBox" id="passwordSignup" placeholder="Password">
+			<Br>
+			<input type="Password" class="loginTextBox" id="password1Signup" placeholder="Retype Password">
+			<br>
+			<select id="usertype">
+				<option>user</option>
+				<option>admin</option>
+			</select>
+			<br>
+			<Br>
+			<input type="button" id="signupNow" value="Signup">		
+		</div>
+		
+	</body>	
+</html>

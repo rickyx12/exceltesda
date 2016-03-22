@@ -6,7 +6,11 @@
 		<script>
 		$(document).ready(function(){
 			$("#btnSearch").click(function(){
-				$.post("home.php",function(data) {
+				
+				var search = $("#search").val();
+				
+			
+				$.post("home.php",{studid:search},function(data) {
 					$("#result").html(data);
 				});
 			});
