@@ -7,7 +7,10 @@
 		<link rel="stylesheet" href="bookorama.css"></link>
 	</head>
 	<body>
+	<div id="mainBody">
+		<div id="loginbox_opacity"></div>
 		<div id="loginbox">
+			<div id="error"></div>
 			<input type="text" class="loginTextBox" autocomplete="off" id="username" placeholder="Username">
 			<br>
 			<input type="Password" class="loginTextBox" id="password" placeholder="Password">
@@ -17,9 +20,9 @@
 			<br>
 			<label>Not Register? </label> <a href="#" id='signup'>Signup</a>
 			<Br>
-			<div id="error"></div>
 		</div>
 		
+		<div id="signupBox_opacity"></div>
 		<div id='signupBox'>
 			<div id="errmsg"></div>
 			<input type="text" class="loginTextBox" autocomplete="off" id="usernameSignup" placeholder="Username">
@@ -32,10 +35,9 @@
 				<option>user</option>
 				<option>admin</option>
 			</select>
-			<br>
-			<Br>
-			<input type="button" id="signupNow" value="Signup">		
+			<br><br>
+			<input type="button" id="backLogin" value="<< Back to Login">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="button" id="signupNow" value="Signup >>">		
 		</div>
-		
+	</div>
 	</body>	
 </html>

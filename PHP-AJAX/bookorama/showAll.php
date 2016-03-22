@@ -3,13 +3,25 @@ include "dbConnect.php";
 echo "<html>";
 echo "<head>";
 echo "<script language='javascript' src='jquery-2.1.4.min.js'></script>";
-echo "<script language='javascript' src='bookorama.js'></script>";
+//echo "<script language='javascript' src='bookorama.js'></script>";
+
+echo "
+<script>
+
+$(document).ready(function(){
+	$('#closeResult').click(function(){
+		$('#rightContainer').fadeOut(2000);
+	});
+});
+
+</script>";
+
 echo "</head>";
 echo "<body>";
 $sql = "SELECT * FROM books order by bookName asc ";
 
 $res = mysql_query($sql,$conn) or die(mysql_error());
-
+echo "<a href='#' id='closeResult'><img src='close.png'></a>";
 echo "<table id='bookTable'>";
 echo "<tr>";
 echo "<th>Book Name</th>";
@@ -31,12 +43,15 @@ echo "</tr>";
 
 echo "
 <script>
+$(document).ready(function(){
  $('#updateBtn$row[bookid]').click(function(){
 	 //alert($row[bookid]);
-	 
-	 $.post('update.php',{id:$row[bookid]},function(data){
+	 $('#rightContainer').fadeIn(2000,function(){
+	 	 $.post('update.php',{id:$row[bookid]},function(data){
 		$('#rightContainer').html(data);
 	 });
+	 });
+
 	 
 	 
  });
@@ -45,9 +60,11 @@ echo "
 	 //alert($row[bookid]);
 	 $.post('delete.php',{bookid:$row[bookid]},function(data){
 		$('#rightContainer').html(data); 
+		$('#rightContainer').fadeOut(2000);
 	 });
  });
- 
+
+ });
 </script>
 
 ";

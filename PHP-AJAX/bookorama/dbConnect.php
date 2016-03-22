@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysql_connect("localhost","root","") or die(mysql_error());
+$conn = mysql_connect("localhost","root","cebu01") or die(mysql_error());
 
 if($conn){
 	//echo "Connection Established";
