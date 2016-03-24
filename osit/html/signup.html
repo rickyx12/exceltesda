@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<script type="text/javascript" src="../css/bootstrap-3.3.5-dist/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="../css/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../css/bootstrap-3.3.5-dist/css/bootstrap.css"></link>
+
+		<style>
+			.marginTxtbox {
+				margin-bottom: 1%;
+			}
+		</style>
+
+		<script>
+			
+			$(document).ready(function(){
+				$("#registeredSuccess").hide();
+				$("#registeredFailed").hide();
+
+				$("#signupButton").click(function(){
+
+					var username1 = $("#username").val();
+					var password1 = $("#password").val();
+					var name1 = $("#name").val();
+					var address1 = $("#address").val();
+					var contactNo1 = $("#contactNo").val();
+
+					if( username1 == "" || password1 == "" || name1 == "" || address1 == "" || contactNo1 == "" ) {
+						$("#registeredFailed").show();
+					}else {
+
+
+					$.post("../php/signup.php",{username:username1,password:password1,name:name1,address:address1,contactNo:contactNo1},function(){
+						$("#signupForm").hide();
+						$("#registeredSuccess").show();
+					});
+				}
+
+				console.log("!2345");
+				});
+			});
+
+		</script>
+
+	</head>
+
+	<body>
+
+	<div class="col-md-2"></div>
+
+	<div class="col-md-8">
+		<h2></h2>
+		
+			<div class="alert alert-danger" id="registeredFailed">
+				Sorry, Pls fill up all the fields. 
+			</div>
+
+			<div id="signupForm" class="panel panel-primary">
+				<div class="panel-heading">
+					<h4 class="panel-title">Signup</h4>
+				</div>
+				<div class="panel-body">
+					<input type="text" class="form-control marginTxtbox" id="username" placeholder="Username" autocomplete="off">
+					<input type="password" class="form-control marginTxtbox" id="password" placeholder="Password" autocomplete="off">
+					<input type="text" class="form-control marginTxtbox" id="name" placeholder="Complete Name" autocomplete="off">
+					<input type="text" class="form-control marginTxtbox" id="address" placeholder="Address" autocomplete="off">
+					<input type="text" class="form-control marginTxtbox" id="contactNo" placeholder="Contact Number" autocomplete="off">
+					<br>
+					<center><input type="button" class="btn btn-primary" id="signupButton" value="Signup"></center>
+				</div>
+			</div>
+
+			<div class="alert alert-success" id="registeredSuccess">
+				Congratulations, You Successfuly Registered. <a href="#" class="alert-link">Click me to redirect login</a>
+			</div>
+		
+	</div>
+	<div class="col-md-2"></div>	
+
+	</body>
+
+</html>

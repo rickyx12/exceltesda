@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<script type="text/javascript" src="../css/bootstrap-3.3.5-dist/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="../css/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../css/bootstrap-3.3.5-dist/css/bootstrap.css"></link>
+
+		<style>
+			.marginTxtbox {
+				margin-bottom: 1%;
+			}
+		</style>
+
+		<script>
+		$(document).ready(function(){ 
+
+			$("#signinError").hide();
+
+			$("#signinNow").click(function(){
+				var username_inputted = $("#username_signinNow").val();
+				var password_inputted = $("#password_signinNow").val();
+
+				$.post("../php/signin.php",{username:username_inputted,password:password_inputted},function(data){
+					if(data == "Failed") {
+						$("#signinError").show();
+					}else {	
+						window.location="../php/home.php"
+					}
+				});
+
+			});
+		});
+		</script>
+
+	</head>
+
+	<body>
+
+	<div class="col-md-2"></div>
+
+	<div class="col-md-8">
+		<h2></h2>
+		
+			<div id="signinError" class="alert alert-danger">Authentication Error</div>
+
+			<div id="signupForm" class="panel panel-primary">
+				<div class="panel-heading">
+					<h4 class="panel-title">Signin</h4>
+				</div>
+				<div id="mainPanel" class="panel-body">
+					<div class="input-group">
+						<span class="glyphicon glyphicon-user input-group-addon"></span>
+						<input type="text" class="form-control marginTxtbox" id="username_signinNow" placeholder="Username" autocomplete="off">
+					</div>
+					<div class="input-group">
+						<span class="glyphicon glyphicon-eye-open input-group-addon"></span>
+						<input type="password" class="form-control marginTxtbox" id="password_signinNow" placeholder="Password" autocomplete="off">
+					</div>
+					<br>
+						<center>
+						<input type="button" class="btn btn-primary" id="signinNow" value="Signin">
+						</center>
+				
+				</div>
+			</div>
+
+		
+	</div>
+	<div class="col-md-2"></div>	
+
+	</body>
+
+</html>

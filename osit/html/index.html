@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Juan Store</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<script type="text/javascript" src="../css/bootstrap-3.3.5-dist/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="../css/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.bxslider/jquery.bxslider.min.js"></script>
+		<link rel="stylesheet" href="../css/bootstrap-3.3.5-dist/css/bootstrap.css"></link>
+		<link rel="stylesheet" href="../js/jquery.bxslider/jquery.bxslider.css"></link>
+
+		<script>
+
+			$(document).ready(function(){
+
+				$(".bxslider").bxSlider({
+					auto:true,
+					autoControls:true,
+					adaptiveHeight:true
+				});
+
+				$("#signupBtn").click(function(){
+					$.post("signup.html",function(data){
+						$("#middleBox").html(data);
+					});
+				});
+
+				$("#signinBtnz").click(function(data){
+					$.post("signin.html",function(data){
+						$("#middleBox").html(data);
+					});
+				});
+			});
+		</script>
+
+		<style>
+			.bxslider {
+				height:30%;
+			}
+
+			.maginLeft {
+				margin-left:10%;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand">
+						<img alt="Juan Store" src="../img/logo.jpg" height="30px" width="80px">
+					</a>
+				</div>
+
+				<div class="navbar-right">
+					<ul class="nav navbar-nav">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Contact</a></li>
+						<li><a href="#">Gallery</a></li>
+						<li><a id="signupBtn" href="#">Signup</a></li>
+					</ul>
+					<button class="btn btn-info navbar-btn navbar-right" id="signinBtnz">Signin</button>
+				</div>
+
+
+			</div>
+		</div>
+		<div class="container">
+		<div class="row">
+
+			<div class="col-md-2">
+				
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<input type="text" class="form-control" placeholder="Search Item">
+					</div>
+				</div>
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h4 class="panel-title">Men</h4>
+						</div>
+						<div class="panel-body">
+							Casual Shirts
+							<Br>
+							Jeans
+							<Br>
+							T-shirts
+							<Br>
+							Footwear
+							<Br>
+							Shorts
+							<Br>
+							Watches
+						</div>
+					</div>
+
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h4 class="panel-title">Women</h4>
+						</div>
+						<div class="panel-body">
+							Dresses
+							<br>
+							Churidar Suits
+							<br>
+							Kurtas
+							<br>
+							Sandals
+							<Br>
+							Office Wear
+							<Br>
+							Artificial Jewelry
+						</div>
+					</div>
+
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h4 class="panel-title">Kids</h4>
+						</div>
+						<div class="panel-body">
+							Baby Apparel
+							<Br>
+							Girls Apparel
+							<Br>
+							Boys Apparel
+							<Br>
+							Kids Toys
+						</div>
+					</div>
+			</div>
+			
+			<div class="col-md-10" id="middleBox">
+				<ul class="bxslider">
+					<li><img src="../img/banner/banner1.jpg"></li>
+					<li><img src="../img/banner/banner2.png"></li>
+					<li><img src="../img/banner/banner3.jpg"></li>
+					<li><img src="../img/banner/banner4.jpg"></li>
+				</ul>
+
+			</div>
+
+		</div>
+		</div>
+	</body>
+</html>
