@@ -25,7 +25,11 @@
 					if(data == "Failed") {
 						$("#signinError").show();
 					}else {	
-						window.location="../php/home.php"
+						if(data == "admin") {
+							window.location = "../php/home.php"
+						}else {
+							window.location = "../php/user.php";
+						}
 					}
 				});
 

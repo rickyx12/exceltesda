@@ -8,7 +8,13 @@ $ro = new database();
 
 if($ro->doubleSelectNow("userAccount","userID","username",$username,"password",$password) != "") {
 $_SESSION['user'] = $username;
-header("Location: home.php");
+
+if($ro->doubleSelectNow("userAccount","usertype","username",$username,"password",$password) == "admin" ) {
+	echo "admin";
+}else {
+	echo "user";
+}
+
 }else {
 echo "Failed";
 }

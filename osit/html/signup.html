@@ -19,19 +19,16 @@
 				$("#registeredFailed").hide();
 
 				$("#signupButton").click(function(){
-
-					var username1 = $("#username").val();
-					var password1 = $("#password").val();
 					var name1 = $("#name").val();
 					var address1 = $("#address").val();
 					var contactNo1 = $("#contactNo").val();
 
-					if( username1 == "" || password1 == "" || name1 == "" || address1 == "" || contactNo1 == "" ) {
+					if( name1 == "" || address1 == "" || contactNo1 == "" ) {
 						$("#registeredFailed").show();
 					}else {
 
 
-					$.post("../php/signup.php",{username:username1,password:password1,name:name1,address:address1,contactNo:contactNo1},function(){
+					$.post("../php/signup.php",{name:name1,address:address1,contactNo:contactNo1},function(){
 						$("#signupForm").hide();
 						$("#registeredSuccess").show();
 					});
@@ -39,6 +36,17 @@
 
 				console.log("!2345");
 				});
+
+
+				$(document).on("click","#startShopping",function(){
+					var name1 = $("#name").val();
+
+					$.post("../php/user.php",function(data) {
+						window.location = "../php/user.php";
+					});
+				});
+
+
 			});
 
 		</script>
@@ -61,8 +69,6 @@
 					<h4 class="panel-title">Signup</h4>
 				</div>
 				<div class="panel-body">
-					<input type="text" class="form-control marginTxtbox" id="username" placeholder="Username" autocomplete="off">
-					<input type="password" class="form-control marginTxtbox" id="password" placeholder="Password" autocomplete="off">
 					<input type="text" class="form-control marginTxtbox" id="name" placeholder="Complete Name" autocomplete="off">
 					<input type="text" class="form-control marginTxtbox" id="address" placeholder="Address" autocomplete="off">
 					<input type="text" class="form-control marginTxtbox" id="contactNo" placeholder="Contact Number" autocomplete="off">
@@ -72,7 +78,7 @@
 			</div>
 
 			<div class="alert alert-success" id="registeredSuccess">
-				Congratulations, You Successfuly Registered. <a href="#" class="alert-link">Click me to redirect login</a>
+				Congratulations, You Successfuly Registered. <a href="#" id="startShopping" class="alert-link">Click me to start shopping</a>
 			</div>
 		
 	</div>
