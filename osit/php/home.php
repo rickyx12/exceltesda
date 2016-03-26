@@ -29,6 +29,10 @@
 					});
 				});
 				
+				$("#userBtn").click(function() {
+					$(".badge").load("orderCount.php");
+				});
+
 				$(document).on("click","#addProduct_links",function(){
 					//$("#newProductForm").show();
 					$("#middleBox_home").load("addNewProduct.php");	
@@ -38,16 +42,23 @@
 					$("#middleBox_home").load("products.php");
 				})
 
+				$(document).on("click","#viewOrder_links",function() {
+					$("#middleBox_home").load("viewOrders.php");
+				});
+
 			});
 		</script>
 
 		<style>
-
+			.margin-bottom {
+				margin-bottom: 5%;
+			}
 		</style>
 
 	</head>
 	<body>
-		<div class="navbar navbar-default">
+		<div class="margin-bottom">
+		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
 					<a href="#" class="navbar-brand">
@@ -69,7 +80,7 @@
 					<ul class="dropdown-menu">
 						<li><a id="addProduct_links" href="#">Add Prodcuct</a></li>
 						<li><a id="viewProduct_links" href="#">View Product</a></li>
-						<li><a href="#">Orders</a></li>
+						<li><a id="viewOrder_links" href="#">Orders  <span class="badge"><?php echo $ro->getCheckoutOrders() ?></span></a></li>
 						<li role="seperator" class="divider"></li>
 						<li><a id="signoutBtnz" href="#">Sign Out</a></li>
 					</ul>
@@ -78,6 +89,7 @@
 
 
 			</div>
+		</div>
 		</div>
 		<div class="container">
 		<div class="row">
