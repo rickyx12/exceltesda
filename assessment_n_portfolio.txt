@@ -7,16 +7,16 @@ Assessment
 
 JS-JQUERY/
 Portfolio
-    Telephone bill
-    ABC payroll system
-    Image Gallery
+    Telephone bill - Javascript-JQuery/telephoneBill.html
+    ABC payroll system - Javascript-JQuery/portfolio2/payroll.html
+    Image Gallery - Javascript-JQuery/portfolio3/gallery.html
 Assessment
-    ABC Restaurant
+    ABC Restaurant -Javascript-JQuery/payroll/payroll.html
 MySQL
 Assessment
-    Textfile n gnwa nmen
+    Textfile n gnwa nmen - MySQL folder
 PHP
 Porfolio
-     bookorama
+     bookorama - PHP-AJAX/bookorama/login.html
 Assessment
      Shopping Cart
