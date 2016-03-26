@@ -6,6 +6,25 @@ class database {
 	private $password = "cebu01";
 	private $database = "shoppingCart";
 
+
+public function formatDate($date) {
+	$date1 = preg_split ("/\-/", $date); 
+	$month = [
+			'01'=>'Jan',
+			'02'=>'Feb',
+			'03'=>'Mar',
+			'04'=>'Apr',
+			'05'=>'May',
+			'06'=>'Jun',
+			'07'=>'Jul',
+			'08'=>'Aug',
+			'09'=>'Sep',
+			'10'=>'Oct',
+			'11'=>'Nov',
+			'12'=>'Dec'];
+	return $month[$date1[1]]." ".$date1[2].", ".$date1[0];
+}
+
 public function selectNow($table,$cols,$data,$data1) {
 	$connection = mysqli_connect($this->host,$this->username,$this->password,$this->database);      
 	$result = mysqli_query($connection, "SELECT (".$cols.") as result FROM ".$table." WHERE ".$data." = ".$data1." ") or die("Query fail: " . mysqli_error()); 
@@ -159,6 +178,34 @@ public function getCustomerOrder($id) {
 }
 }
 
+
+public function getCheckoutOrders() {
+	$connection = mysqli_connect($this->host,$this->username,$this->password,$this->database);      
+	$result = mysqli_query($connection, "SELECT count(custID) as totalCustomer from (SELECT custID FROM `customerOrder` WHERE status = 'checkout' and seen = '' group by custID) as customer") or die("Query fail: " . mysqli_error()); 
+	while($row = mysqli_fetch_array($result)) {
+	return $row['totalCustomer'];
+	}
+}
+
+private $getCheckoutCustomers_orderID;
+private $getCheckoutCustomers_customerID;
+
+public function getCheckoutCustomers_orderID() {
+	return $this->getCheckoutCustomers_orderID;
+}
+
+public function getCheckoutCustomers_customerID() {
+	return $this->getCheckoutCustomers_customerID;
+}
+
+public function getCheckoutCustomers() {
+	$connection = mysqli_connect($this->host,$this->username,$this->password,$this->database);      
+	$result = mysqli_query($connection, "SELECT orderID,custID FROM customerOrder WHERE status = 'checkout' group by custID") or die("Query fail: " . mysqli_error()); 
+	while($row = mysqli_fetch_array($result)) {
+		$this->getCheckoutCustomers_orderID[] = $row["orderID"];
+		$this->getCheckoutCustomers_customerID[] = $row['custID'];
+	}
+}
 
 
 
