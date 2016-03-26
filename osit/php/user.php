@@ -27,22 +27,35 @@
 				
 			}
 
+			.fixed {
+        		position: fixed;
+        		width: 13%;
+			}
+
+			.margin-bottom {
+				margin-bottom: 5%;
+			}
+
 		</style>
 
 		<script>
 			$(document).ready(function(){ 
-				$("#userCart").load("cart.php");
+				var custID = $("#customerID").val();
+				$("#userCart").load("cart.php",{custID:custID});
 				<?php foreach($ro->getProductList_productID() as $id) { ?>
 					var productID<?php echo $id ?> = $("#productID<?php echo $id ?>").val();
-				
+				<?php } ?>
 
+				<?php foreach($ro->getProductList_productID() as $id) { ?>
 
-				$("#myModal<?php echo $id ?>").on("show.bs.modal",function(){
-					$("#addOrder<?php echo $id ?>").click(function() {
+				$("#myModal<?php echo $id ?>").on("show.bs.modal",function(event){
+					//$(document).on("click","#addOrder<?php echo $id ?>",function() {
+						//console.log(this.id);
+						/*
 						var customerName = $("#customerName").val();
 						var customerID = $("#customerID").val();						
 						var quantity<?php echo $id ?> = $("#quantity<?php echo $id ?>").val();
-						//console.log(quantity<?php echo $id ?>);
+						console.log(customerName);
 						var myData = {
 							name:customerName,
 							id:customerID,
@@ -50,12 +63,43 @@
 							quantity:quantity<?php echo $id ?>
 						}
 						$.post("addOrder.php",myData,function() {
-							$("#userCart").load("cart.php");
+							$("#userCart").load("cart.php",{custID:customerID});
+							$("#myModal<?php echo $id ?>").off("show.bs.modal");
+						});
+						*/
+						
+					//});
+					
+				});
+
+					$('#myModal<?php echo $id ?>').on('hidden.bs.modal', function () {
+					    $(this).find("input").val('1').end();
+
+					});				
+
+				$("#addOrder<?php echo $id ?>").click(function() {
+					//console.log(this.id);
+
+						var customerName = $("#customerName").val();
+						var customerID = $("#customerID").val();						
+						var quantity<?php echo $id ?> = $("#quantity<?php echo $id ?>").val();
+						console.log(customerName);
+						var myData = {
+							name:customerName,
+							id:customerID,
+							prodID:productID<?php echo $id ?>,
+							quantity:quantity<?php echo $id ?>
+						}
+						$.post("addOrder.php",myData,function() {
+							$("#userCart").load("cart.php",{custID:customerID});
+							$("#myModal<?php echo $id ?>").off("show.bs.modal");
 						});
 
 
-					});
-				});		
+				});
+
+				<?php } ?>
+
 				
 			/*		ayaw makuha ung quantity kc ung textbox q nsa modal wtf.
 			$("#addOrder<?php echo $id ?>").click(function() {
@@ -67,13 +111,14 @@
 				});
 			});
 			*/
-				<?php } ?>
+				
 			});
 		</script>
 
 	</head>
 	<body>
-		<div class="navbar navbar-default">
+		<div class="row margin-bottom">
+		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
 					<a href="#" class="navbar-brand">
@@ -97,6 +142,11 @@
 
 			</div>
 		</div>
+		</div>
+
+
+
+		<div class="row">
 		<div class="container">
 		<input type="hidden" name="customerName" id="customerName" value="<?php echo $_SESSION["customerName"] ?>">
 		<input type="hidden" name="customerID" id="customerID" value="<?php echo $_SESSION["customerID"] ?>">
@@ -163,7 +213,7 @@
 					</div>
 			</div>
 			
-			<div class="col-md-6" id="middleBox_user">
+			<div class="col-md-6 col" id="middleBox_user">
 				
 				<?php foreach($ro->getProductList_productID() as $id) { ?>
 						<input type="hidden" id="productID<?php echo $id ?>" value="<?php echo $id ?>">
@@ -240,6 +290,7 @@
 				</div>
 			</div>
 
+		</div>
 		</div>
 		</div>
 	</body>
