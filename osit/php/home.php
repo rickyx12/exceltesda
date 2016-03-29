@@ -46,13 +46,37 @@
 					$("#middleBox_home").load("viewOrders.php");
 				});
 
+				$(document).on("keydown","#searchTxt",function(event) {
+					
+					var search = $("#searchTxt").val();
+
+					if(event.which == 13) {
+						$("#middleBox_home").load("home_search.php",{search:search},function(){
+							$("#searchTxt").val("");
+							$("#searchTxt").blur();
+						});
+					}	
+
+				});
+
+				
 			});
 		</script>
 
 		<style>
-			.margin-bottom {
-				margin-bottom: 5%;
+
+			body {
+				padding-top:70px;
 			}
+
+			#brandLogo {
+			    max-width: 100px;
+			    max-height: 30px;
+			    height: auto;
+			    width: auto;					
+			}
+
+
 		</style>
 
 	</head>
@@ -60,13 +84,12 @@
 		<div class="margin-bottom">
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
-				<div class="navbar-header">
+	
 					<a href="#" class="navbar-brand">
-						<img alt="Juan Store" src="../img/logo.jpg" height="30px" width="80px">
+						<img alt="Juan Store" src="../img/logo.jpg" id="brandLogo">
 					</a>
-				</div>
-
-				<div name="navbar" class="navbar-right">
+			
+				<div name="navbar" class="navbar-right collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li><a href="#">Home</a></li>
 						<li><a href="#">About Us</a></li>
@@ -80,13 +103,18 @@
 					<ul class="dropdown-menu">
 						<li><a id="addProduct_links" href="#">Add Prodcuct</a></li>
 						<li><a id="viewProduct_links" href="#">View Product</a></li>
-						<li><a id="viewOrder_links" href="#">Orders  <span class="badge"><?php echo $ro->getCheckoutOrders() ?></span></a></li>
+						<li><a id="viewOrder_links" href="#">Orders <?php echo $ro->getCheckoutOrders() ?></a></li>
 						<li role="seperator" class="divider"></li>
 						<li><a id="signoutBtnz" href="#">Sign Out</a></li>
 					</ul>
 					</div>
 				</div>
 
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>		
+					<span class="icon-bar"></span>		
 
 			</div>
 		</div>
@@ -98,7 +126,7 @@
 				
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<input type="text" class="form-control" placeholder="Search Item">
+						<input type="text" class="form-control" id="searchTxt" placeholder="Search Item">
 					</div>
 				</div>
 					<div class="panel panel-primary">
@@ -156,7 +184,6 @@
 			</div>
 			
 			<div class="col-md-10" id="middleBox_home"></div>
-
 		</div>
 		</div>
 	</body>

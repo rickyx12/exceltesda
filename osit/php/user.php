@@ -1,7 +1,7 @@
 <?php include "database.php"; ?>
 <?php session_start() ?>
 <?php $ro = new database() ?>
-<?php $ro->getProductList(); ?>
+<?php $ro->getProductList(""); ?>
 <?php if(!isset($_SESSION["customerName"]) && !isset($_SESSION["customerID"]) ) {
 		header("Location: ../html/index.html");
 	}else{ } ?>
@@ -15,16 +15,22 @@
 		<link rel="stylesheet" href="../css/bootstrap-3.3.5-dist/css/bootstrap.css"></link>
 
 		<style>
+
+			body {
+				padding-top:70px;
+			}
 			.imgPhotoUser {
-				width:100%;
-				height:100% ;
-				
+			    max-width: 200px;
+			    max-height: 600px;
+			    height: auto;
+			    width: auto;				
 			}
 
 			.cartPhotoUser {
-				width:50%;
-				height:50% ;
-				
+			    max-width: 200px;
+			    max-height: 300px;
+			    height: auto;
+			    width: auto;				
 			}
 
 			.fixed {
@@ -32,10 +38,25 @@
         		width: 13%;
 			}
 
-			.margin-bottom {
-				margin-bottom: 5%;
+			#middleBox_user {
+				border:0px solid #ffffff;
+				width:50%;
+				height:650px;
+				margin:auto;
+				padding:10px;
+				overflow:scroll;
+				overflow-x:hidden;				
 			}
 
+			#brandLogo {
+			    max-width: 100px;
+			    max-height: 30px;
+			    height: auto;
+			    width: auto;					
+			}
+
+
+			
 		</style>
 
 		<script>
@@ -49,26 +70,7 @@
 				<?php foreach($ro->getProductList_productID() as $id) { ?>
 
 				$("#myModal<?php echo $id ?>").on("show.bs.modal",function(event){
-					//$(document).on("click","#addOrder<?php echo $id ?>",function() {
-						//console.log(this.id);
-						/*
-						var customerName = $("#customerName").val();
-						var customerID = $("#customerID").val();						
-						var quantity<?php echo $id ?> = $("#quantity<?php echo $id ?>").val();
-						console.log(customerName);
-						var myData = {
-							name:customerName,
-							id:customerID,
-							prodID:productID<?php echo $id ?>,
-							quantity:quantity<?php echo $id ?>
-						}
-						$.post("addOrder.php",myData,function() {
-							$("#userCart").load("cart.php",{custID:customerID});
-							$("#myModal<?php echo $id ?>").off("show.bs.modal");
-						});
-						*/
-						
-					//});
+
 					
 				});
 
@@ -97,47 +99,74 @@
 
 
 				});
-
 				<?php } ?>
 
+		
 				
-			/*		ayaw makuha ung quantity kc ung textbox q nsa modal wtf.
-			$("#addOrder<?php echo $id ?>").click(function() {
-				var customerName = $("#customerName").val();
-				var customerID = $("#customerID").val();
-				console.log(quantity<?php echo $id ?>);
-				$.post("addOrder.php",{name:customerName,id:customerID,prodID:productID<?php echo $id ?>,quantity:quantity<?php echo $id ?>},function(data) {
-					console.log(data);
-				});
-			});
-			*/
-				
+					$("#signOutBtn").click(function() {
+						window.location = "redirect.php";
+					});
+
+					$(document).on("click","#myOrders",function() {
+						$("#mid-right-box").load("myOrders.php");
+						$("#cartDiv").hide();
+					});
+
+
+					$(document).on("keydown","#searchTxt",function(event) {	
+
+						var searchItem = $("#searchTxt").val();
+
+						if(event.which == 13) {	
+							$("#mid-right-box").load("user.php #middleBox_user",function() {
+								$("#middleBox_user").load("search.php",{search:searchItem},function(){
+									$("#searchTxt").val("");
+									$("#searchTxt").blur();
+									$("#cartDiv").show();
+								});
+							});
+						}
+
+					});
+
+
 			});
 		</script>
 
 	</head>
 	<body>
-		<div class="row margin-bottom">
+		<div class="row">
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
-				<div class="navbar-header">
 					<a href="#" class="navbar-brand">
-						<img alt="Juan Store" src="../img/logo.jpg" height="30px" width="80px">
+						<img alt="Juan Store" src="../img/logo.jpg" id="brandLogo">
 					</a>
-				</div>
+				
 
-				<div name="navbar" class="navbar-right">
+				<div name="navbar" class="navbar-right collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li><a href="redirect.php">Home</a></li>
 						<li><a href="#">About Us</a></li>
 						<li><a href="#">Contact</a></li>
-						<li><a href="#">Gallery</a></li>
+						<li><a id="galleryLink" href="user.php">Gallery</a></li>
 					</ul>
 					<div class="nav navbar-nav btn-group">
 					<button class="btn btn-info navbar-btn navbar-right dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="userBtn"><?php echo ucfirst($_SESSION['customerName']) ?>
+					<span class="caret"></span>
 					</button>
+					<ul class="dropdown-menu">
+						<li><a id="myOrders" href="#">My Orders</a></li>
+						<li class="divider"></li>
+						<li><a id="signOutBtn" href="#">Signout</a></li>
+					</ul>
 					</div>
 				</div>
+
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>		
+					<span class="icon-bar"></span>			
 
 
 			</div>
@@ -156,7 +185,7 @@
 				
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<input type="text" class="form-control" placeholder="Search Item">
+						<input type="text" class="form-control" id="searchTxt" placeholder="Search Item">
 					</div>
 				</div>
 					<div class="panel panel-primary">
@@ -212,14 +241,13 @@
 						</div>
 					</div>
 			</div>
-			
-			<div class="col-md-6 col" id="middleBox_user">
-				
+			<div id="mid-right-box">
+			<div class="col-md-6 col" id="middleBox_user" >	
 				<?php foreach($ro->getProductList_productID() as $id) { ?>
 						<input type="hidden" id="productID<?php echo $id ?>" value="<?php echo $id ?>">
 						<div class="jumbotron container-fluid">
 							<div class="col-md-6">
-								<img src="uploads/<?php echo $ro->selectNow('product','image','productID',$id) ?>" class="imgPhotoUser"></img>
+								<img src="uploads/<?php echo $ro->selectNow('product','image','productID',$id) ?>" class="col-xs-12 img-rounded"></img>
 							</div>
 
 							<div class="col-md-6">
@@ -275,11 +303,11 @@
 									</div>
 						</div>
 				<?php } ?>
-
-
+			</div>
 			</div>
 
-			<div class="col-md-4">
+
+			<div id="cartDiv" class="col-md-4">
 				<div class="panel panel-success">
 					<div class="panel-heading">
 						<h4 class="panel-title"><?php echo ucfirst($_SESSION["customerName"])."'s" ?> Cart</h4>
@@ -289,7 +317,7 @@
 					</div>					
 				</div>
 			</div>
-
+			</div>
 		</div>
 		</div>
 		</div>

@@ -4,7 +4,7 @@ session_start();
 $ro = new database();
 
 //$username = $_POST['username'];
-//$password = $_POST['password'];
+$password = $_POST['password'];
 $name = $_POST['name'];
 $address = $_POST['address'];
 $contactNo = $_POST['contactNo'];
@@ -12,7 +12,9 @@ $contactNo = $_POST['contactNo'];
 $customerInfo = [
 "custName" => $name,
 "address" => $address,
-"contactNo" => $contactNo
+"contactNo" => $contactNo,
+"username" => strtok($name," "),
+"password" => $password
 ];
 /*
 $customerAcct = [

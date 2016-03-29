@@ -1,16 +1,11 @@
-<?php
-include "session.php";
-include "database.php";
-
-$ro = new database();
-$ro->getProductList("");
-
-?>
+<?php include "database.php"; ?>
+<?php $ro = new database() ?>
+<?php $ro->getProductList($_POST['search']) ?>
 <!doctype html>
 <html>
 	<head>
-		<title>View Product</title>
-		<style type="text/css">
+		<style>
+
 			.imgPhoto {
 				width:100%;
 				height:50%;
@@ -19,7 +14,7 @@ $ro->getProductList("");
 			#removePhoto {
 				width: 20%;
 				height: 20%;
-			}
+			}			
 
 		</style>
 
@@ -60,6 +55,7 @@ $ro->getProductList("");
 			<?php } ?>
 
 		</script>
+
 
 	</head>
 	<body>

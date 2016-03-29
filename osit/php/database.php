@@ -9,7 +9,7 @@ class database {
 
 public function formatDate($date) {
 	$date1 = preg_split ("/\-/", $date); 
-	$month = [
+	$month = array(
 			'01'=>'Jan',
 			'02'=>'Feb',
 			'03'=>'Mar',
@@ -21,7 +21,7 @@ public function formatDate($date) {
 			'09'=>'Sep',
 			'10'=>'Oct',
 			'11'=>'Nov',
-			'12'=>'Dec'];
+			'12'=>'Dec');
 	return $month[$date1[1]]." ".$date1[2].", ".$date1[0];
 }
 
@@ -90,13 +90,13 @@ public function deleteNow($table,$cols,$colsData) {
 
 function addProduct($prodName,$prodPrice,$prodGender,$prodCategory,$photo) {
 
-	$product = [
+	$product = array(
 		"productName" => $prodName,
 		"price" => $prodPrice,
 		"gender" => $prodGender,
 		"catID" => $prodCategory,
 		"image" => $photo
-	];
+	);
 
 	$this->insertNow("product",$product);
 
@@ -139,9 +139,15 @@ public function getProductList_image() {
 	return $this->getProductList_image;
 }
 
-public function getProductList() {
-	$connection = mysqli_connect($this->host,$this->username,$this->password,$this->database);      
-	$result = mysqli_query($connection, "SELECT productID,productName,price,gender,catID,image FROM product order by productName ASC ") or die("Query fail: " . mysqli_error()); 
+public function getProductList($search) {
+	$connection = mysqli_connect($this->host,$this->username,$this->password,$this->database);    
+
+	if($search == "") {
+		$result = mysqli_query($connection, "SELECT productID,productName,price,gender,catID,image FROM product order by productName ASC ") or die("Query fail: " . mysqli_error()); 
+	}else {
+		$result = mysqli_query($connection, "SELECT productID,productName,price,gender,catID,image FROM product WHERE productName like '$search%' order by productName ASC ") or die("Query fail: " . mysqli_error()); 
+	}
+	
 	while($row = mysqli_fetch_array($result)) {
 	$this->getProductList_productID[] = $row['productID'];
 	$this->getProductList_productName[] = $row['productName'];
@@ -170,7 +176,7 @@ public function getCustomerOrder_productPhoto() {
 
 public function getCustomerOrder($id) {
 	$connection = mysqli_connect($this->host,$this->username,$this->password,$this->database);      
-	$result = mysqli_query($connection, "SELECT co.orderID,p.productName,p.price,p.image FROM customerOrder co,product p WHERE co.productID = p.productID and co.custID ='$id' ") or die("Query fail: " . mysqli_error()); 
+	$result = mysqli_query($connection, "SELECT co.orderID,p.productName,p.price,p.image FROM customerOrder co,product p WHERE co.productID = p.productID and co.custID ='$id' and co.status != 'checkout' ") or die("Query fail: " . mysqli_error()); 
 	while($row = mysqli_fetch_array($result)) {
 		$this->getCustomerOrder_orderID[] = $row['orderID'];
 		$this->getCustomerOrder_productName[] = $row['productName'];
@@ -179,11 +185,31 @@ public function getCustomerOrder($id) {
 }
 
 
+private $viewCustomerOrder_orderID;
+
+public function viewCustomerOrder_orderID() {
+	return $this->viewCustomerOrder_orderID;
+}
+
+public function viewCustomerOrder($id,$date) {
+	$connection = mysqli_connect($this->host,$this->username,$this->password,$this->database);      
+	$result = mysqli_query($connection, "SELECT co.orderID,p.productName,p.price,p.image FROM customerOrder co,product p WHERE co.productID = p.productID and co.custID ='$id' and co.status = 'checkout' and co.orderDate = '$date' ") or die("Query fail: " . mysqli_error()); 
+	while($row = mysqli_fetch_array($result)) {
+		$this->viewCustomerOrder_orderID[] = $row['orderID'];
+}
+}
+
 public function getCheckoutOrders() {
 	$connection = mysqli_connect($this->host,$this->username,$this->password,$this->database);      
-	$result = mysqli_query($connection, "SELECT count(custID) as totalCustomer from (SELECT custID FROM `customerOrder` WHERE status = 'checkout' and seen = '' group by custID) as customer") or die("Query fail: " . mysqli_error()); 
+	$result = mysqli_query($connection, "SELECT count(custID) as totalCustomer from (SELECT custID FROM `customerOrder` WHERE status = 'checkout' group by custID,orderDate) as customer") or die("Query fail: " . mysqli_error()); 
 	while($row = mysqli_fetch_array($result)) {
-	return $row['totalCustomer'];
+	
+		if($row['totalCustomer'] > 0) {
+			$x	= "<span class='badge'>".$row['totalCustomer']."</span>";
+		}else {
+			$x = "";
+		}	
+		return $x;
 	}
 }
 
@@ -199,14 +225,60 @@ public function getCheckoutCustomers_customerID() {
 }
 
 public function getCheckoutCustomers() {
+	
 	$connection = mysqli_connect($this->host,$this->username,$this->password,$this->database);      
-	$result = mysqli_query($connection, "SELECT orderID,custID FROM customerOrder WHERE status = 'checkout' group by custID") or die("Query fail: " . mysqli_error()); 
+	$result = mysqli_query($connection, "SELECT orderID,custID FROM customerOrder WHERE status = 'checkout' group by custID,orderDate order by orderDate desc ") or die("Query fail: " . mysqli_error()); 
 	while($row = mysqli_fetch_array($result)) {
 		$this->getCheckoutCustomers_orderID[] = $row["orderID"];
 		$this->getCheckoutCustomers_customerID[] = $row['custID'];
 	}
 }
 
+public function getCheckoutCustomers_pagination() {
+	$connection = mysqli_connect($this->host,$this->username,$this->password,$this->database);      
+	$result = mysqli_query($connection, "SELECT count(totalCustomer) as totCus FROM (SELECT count(custID) as totalCustomer FROM customerOrder WHERE status = 'checkout' group by custID) as customer") or die("Query fail: " . mysqli_error()); 
+	while($row = mysqli_fetch_array($result)) {
+		return $row['totCus'];
+	}
+}
+
+private $getMyOrders_orderID;
+
+public function getMyOrders_orderID() {
+	return $this->getMyOrders_orderID;
+}
+
+public function getMyOrders($custID) {
+	$connection = mysqli_connect($this->host,$this->username,$this->password,$this->database);      
+	$result = mysqli_query($connection, "SELECT orderID FROM customerOrder WHERE status = 'checkout' and custID = '$custID' group by orderDate") or die("Query fail: " . mysqli_error()); 
+	while($row = mysqli_fetch_array($result)) {
+		$this->getMyOrders_orderID[] = $row['orderID'];
+	}
+}
+
+
+private $getMyOrdersList_orderID;
+
+public function getMyOrdersList_orderID() {
+	return $this->getMyOrdersList_orderID;
+}
+
+public function getMyOrdersList($custID,$date) {
+	$connection = mysqli_connect($this->host,$this->username,$this->password,$this->database);      
+	$result = mysqli_query($connection, "SELECT orderID FROM customerOrder WHERE status = 'checkout' and custID = '$custID' and orderDate = '$date' ") or die("Query fail: " . mysqli_error()); 
+	while($row = mysqli_fetch_array($result)) {
+		$this->getMyOrdersList_orderID[] = $row['orderID'];
+	}
+}
+
+
+public function countRecord($primary) {
+	$connection = mysqli_connect($this->host,$this->username,$this->password,$this->database);      
+	$result = mysqli_query($connection, "SELECT count(".$primary.") FROM customerOrder WHERE status = 'checkout' and custID = '$custID' and orderDate = '$date' ") or die("Query fail: " . mysqli_error()); 
+	while($row = mysqli_fetch_array($result)) {
+		$this->getMyOrdersList_orderID[] = $row['orderID'];
+	}	
+}
 
 
 }

@@ -22,18 +22,51 @@
 				var password_inputted = $("#password_signinNow").val();
 
 				$.post("../php/signin.php",{username:username_inputted,password:password_inputted},function(data){
-					if(data == "Failed") {
+					if(data == "failed") {
 						$("#signinError").show();
 					}else {	
 						if(data == "admin") {
 							window.location = "../php/home.php"
-						}else {
+						}else if(data == "user") {
 							window.location = "../php/user.php";
+						}
+						else {
+							alert("wtf! dont know what happen.!");
 						}
 					}
 				});
 
 			});
+
+
+
+
+					$("#password_signinNow").keydown(function(event) {
+						
+							if(event.which == 13) {
+								var username_inputted = $("#username_signinNow").val();
+								var password_inputted = $("#password_signinNow").val();
+
+								$.post("../php/signin.php",{username:username_inputted,password:password_inputted},function(data){
+									if(data == "failed") {
+										$("#signinError").show();
+									}else {	
+										if(data == "admin") {
+											window.location = "../php/home.php"
+										}else if(data == "user") {
+											window.location = "../php/user.php";
+										}
+										else {
+											alert("wtf! dont know what happen.!");
+										}
+									}
+								});
+	
+						}
+					}
+					);
+
+
 		});
 		</script>
 

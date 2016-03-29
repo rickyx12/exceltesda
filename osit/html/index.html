@@ -22,7 +22,9 @@
 				$(".bxslider").bxSlider({
 					auto:true,
 					autoControls:true,
-					adaptiveHeight:true
+					adaptiveHeight:true,
+					nextSelector:'#',
+					prevSelector:'#',
 				});
 
 				$("#signupBtn").click(function(){
@@ -34,14 +36,42 @@
 				$("#signinBtnz").click(function(data){
 					$.post("signin.html",function(data){
 						$("#middleBox").html(data);
+						$("#bottomBox").hide();
 					});
 				});
+
+				$(document).on("keydown","#searchTxt",function(event){
+
+						var searchItem = $("#searchTxt").val();
+
+					if(event.which == 13){
+						$("#middleBox").load("../php/search_visitor.php",{searchItem:searchItem},function(){
+							$("#bottomBox").hide();
+							$("#searchTxt").blur();
+							$("#searchTxt").val("");
+						});
+					}
+				});
+
+
 			});
 		</script>
 
 		<style>
+
+			body {
+				padding-top: 70px;
+			}
+
 			.bxslider {
 				height:30%;
+			}
+
+			#brandLogo {
+			    max-width: 100px;
+			    max-height: 30px;
+			    height: auto;
+			    width: auto;					
 			}
 
 			.maginLeft {
@@ -56,24 +86,15 @@
 				color:black;
 			}
 
-			.margin-bottom {
-				margin-bottom: 5%;
-			}
-
 		</style>
 
 	</head>
 	<body>
-	<div class="margin-bottom"></div>
-		<div class="navbar navbar-default navbar-fixed-top margin-bot">
+	<div class=""></div>
+		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
-				<div class="navbar-header">
-					<a href="#" class="navbar-brand">
-						<img alt="Juan Store" src="../img/logo.jpg" height="30px" width="80px">
-					</a>
-				</div>
-
-				<div class="navbar-right">
+				<a href="#" class="navbar-brand"><img src="../img/logo.jpg" id="brandLogo"></a>	
+				<div class="navbar-right collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li><a href="index.html">Home</a></li>
 						<li><a href="#">About Us</a></li>
@@ -82,8 +103,15 @@
 						<li><a id="signupBtn" href="#">Signup</a></li>
 					</ul>
 					<button class="btn btn-info navbar-btn navbar-right" id="signinBtnz">Signin</button>
+
 				</div>
 
+
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>		
+					<span class="icon-bar"></span>						
 
 			</div>
 		</div>
@@ -94,7 +122,7 @@
 				
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<input type="text" class="form-control" placeholder="Search Item">
+						<input type="text" class="form-control" id="searchTxt" placeholder="Search Item">
 					</div>
 				</div>
 					<div class="panel panel-primary">
@@ -153,6 +181,7 @@
 			
 				<div class="container">
 				<div class="col-md-10" id="middleBox">
+				<div class="row">
 				<div>
 				<ul class="bxslider">
 					<li><img src="../img/banner/banner1.jpg"></li>
@@ -161,44 +190,28 @@
 					<li><img src="../img/banner/banner4.jpg"></li>
 				</ul>
 				</div>
-
-				<div id="bottomBox" class="col">
-					<div class="jumbotron container-fluid">
-						<div class="col-md-3">
-							<img src="../img/mainArticle.jpg">
-						</div>
-						<div class="col-md-9">
-							<h5>
-								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque <a href="#" class="readMore">Read More >></a>
-							</h5>
-						</div>
-					</div>
-
-					<div class="jumbotron container-fluid">
-						<div class="col-md-3">
-							<img src="../img/article1.jpg">
-						</div>
-						<div class="col-md-9">
-							<h5>
-								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque <a href="#" class="readMore">Read More >></a>
-							</h5>
-						</div>
-					</div>
-
-					<div class="jumbotron container-fluid">
-						<div class="col-md-3">
-							<img src="../img/article3.jpg">
-						</div>
-						<div class="col-md-9">
-							<h5>
-								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque <a href="#" class="readMore">Read More >></a>
-							</h5>
-						</div>
-					</div>
-
-				</div>			
 				</div>
 				</div>
+
+					<div class="row" id="bottomBox">	
+					<div class="container-fluid">
+						<div class="row">
+						<div class="col-md-3">
+							<img src="../img/mainArticle.jpg" class="img-rounded">
+						</div>
+						
+						<div class="col-md-5">
+							<h5>
+								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque <a href="#" class="readMore">Read More >></a>
+							</h5>
+						</div>
+					</div>
+						
+				</div>
+				</div>
+
+
+				
 
 			</div>
 		</div>

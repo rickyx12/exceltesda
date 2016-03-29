@@ -1,5 +1,8 @@
 <?php include "database.php"; ?>
 <?php $ro = new database() ?>
+<?php
+
+?>
 <?php $ro->getCheckoutCustomers() ?>
 <!doctype html>
 <html>
@@ -11,40 +14,65 @@
 			.fontSize {
 				font-size:90%;
 			}
+
+			#ordersHandler {
+				border:0px solid #ffffff;
+				width:auto;
+				height:650px;
+				margin:auto;
+				padding:10px;
+				overflow:scroll;
+				overflow-x:hidden;				
+			}
+
+
+
+
 		</style>
 
 		<script>
-			<?php foreach($ro->getCheckoutCustomers_customerID() as $id) { ?>
+		$(document).ready(function(){
+
+
+			<?php foreach($ro->getCheckoutCustomers_orderID() as $id) { ?>
 				$(document).on("click","#viewOrderBtn<?php echo $id ?>",function() {
 					var custID<?php echo $id ?> = $("#customerID<?php echo $id ?>").val();
+					var date = $("#date<?php echo $id ?>").val();
 
-					$("#customerCart").load("viewOrdersDetails.php",{customerID:custID<?php echo $id ?>},function() {
-						//console.log(custID<?php echo $id ?>);
-						$.post("orderSeen.php",{customerID:custID<?php echo $id ?>},function() {
-							$("#orderIcon<?php echo $id ?>").attr("class","glyphicon glyphicon-ok");
-						});
-					});
+					$("#customerCart").load("viewOrdersDetails.php",{customerID:custID<?php echo $id ?>,date:date});
 				});
 			<?php } ?>
+
+					
+				<?php for($a=1;$a<=2;$a++) { ?>
+					$(document).on("click","#pagez<?php echo $a ?>",function(){
+						var page = $("#pagez<?php echo $a ?>").data("index");
+						$("#middleBox_home").load("viewOrders.php",{page:page},function(){
+							$("#list<?php echo $a ?>").attr("class","active");
+							console.log(page);
+						});
+					});
+				<?php } ?>
+
+
+
+			});
 		</script>
 
 
 	</head>
 	<body>
 		<div class="col-md-6">
-		
-			<?php foreach($ro->getCheckoutCustomers_customerID() as $id) { ?>
-				<input type="hidden" id="customerID<?php echo $id ?>" value="<?php echo $id ?>">
+			<div id="ordersHandler">
+			<?php foreach($ro->getCheckoutCustomers_orderID() as $id) { ?>
+				<input type="hidden" id="customerID<?php echo $id ?>" value="<?php echo $ro->selectNow("customerOrder","custID","orderID",$id) ?>">
+				<input type="hidden" id="date<?php echo $id ?>" value="<?php echo $ro->selectNow("customerOrder","orderDate","orderID",$ro->selectNow("customerOrder","orderID","orderID",$id)) ?>">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						
-					<?php if($ro->selectNow("customerOrder","seen","custID",$id) == "") { ?>
-						<h4 class="panel-title"><span id="orderIcon<?php echo $id ?>" class="glyphicon glyphicon-envelope"></span>  <?php echo ucfirst($ro->selectNow("customer","custName","custID",$id)) ?><span class="pull-right fontSize"><?php echo $ro->formatDate($ro->selectNow("customerOrder","orderDate","custID",$id)) ?></span></h4>
-					<?php }else { ?>
-						<h4 class="panel-title"><span id="orderIcon<?php echo $id ?>" class="glyphicon glyphicon-ok"></span>  <?php echo ucfirst($ro->selectNow("customer","custName","custID",$id)) ?><span class="pull-right fontSize"><?php echo $ro->formatDate($ro->selectNow("customerOrder","orderDate","custID",$id)) ?></span></h4>					
-
-					<?php } ?>
-
+					
+						<h4 class="panel-title"><span id="orderIcon<?php echo $id ?>" class="glyphicon glyphicon-shopping-cart"></span>  <?php echo ucfirst($ro->selectNow("customer","custName","custID",$ro->selectNow("customerOrder","custID","orderID",$id))) ?><span class="pull-right fontSize"><?php echo $ro->formatDate($ro->selectNow("customerOrder","orderDate","orderID",$id)) ?></span></h4>
+						
 					</div>
 					<div class="panel-body centerBtn">
 						<input type="button" id="viewOrderBtn<?php echo $id ?>" class="btn btn-success" value="View Order">
@@ -52,11 +80,11 @@
 
 				</div>
 			<?php } ?>
+			</div>
 		</div>
-
 		<div id="customerCart" class="col-md-6">
-			
-		</div>
 		
+		</div>
+	
 	</body>
 </html>

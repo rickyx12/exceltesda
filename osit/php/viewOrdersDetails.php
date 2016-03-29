@@ -1,7 +1,11 @@
 <?php include "database.php"; ?>
 <?php $customerID = $_POST["customerID"] ?>
+<?php $date = $_POST['date']; ?>
 <?php $ro = new database() ?>
-<?php $ro->getCustomerOrder($customerID) ?>
+<?php
+
+?>
+<?php $ro->viewCustomerOrder($customerID,$date) ?>
 <?php $total=0; ?>
 <html>
 	<head>
@@ -27,7 +31,7 @@
 			    }				
 			}
 
-			img {
+			#ordersPhoto {
 				width: 100%;
 				height: 100%;
 			}
@@ -35,6 +39,7 @@
 		</style>
 	</head>
 	<body>
+	
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 			
@@ -43,11 +48,11 @@
 				</h4>
 			
 			</div>
-		<?php foreach($ro->getCustomerOrder_orderID() as $id) {  ?>
+		<?php foreach($ro->viewCustomerOrder_orderID() as $id) {  ?>
 			<?php $total += ($ro->selectNow("product","price","productID",$ro->selectNow("customerOrder","productID","orderID",$id)) * $ro->selectNow("customerOrder","quantity","orderID",$id)) ?>
 			<div class="jumbotron container-fluid">
 				<div class="col-md-4">
-					<img src="uploads/<?php echo $ro->selectNow("product","image","productID",$ro->selectNow("customerOrder","productID","orderID",$id)) ?>">
+					<img id="ordersPhoto" src="uploads/<?php echo $ro->selectNow("product","image","productID",$ro->selectNow("customerOrder","productID","orderID",$id)) ?>">
 				</div>
 				<div class="col-md-8">
 					<h4><?php echo $ro->selectNow("product","productName","productID",$ro->selectNow("customerOrder","productID","orderID",$id)) ?></h4>
@@ -60,5 +65,6 @@
 			<h3>Php <?php echo number_format($total,2) ?></h3>
 		</div>
 		</div>
+
 	</body>
 </html>

@@ -1,6 +1,6 @@
 <?php include "database.php"; ?>
 <?php $ro = new database() ?>
-<?php $ro->getProductList(); ?>
+<?php $ro->getProductList(""); ?>
 <!doctype html>
 <html>
 	<head>
@@ -31,10 +31,10 @@
 			<div col-md-8>
 				<h3><?php echo $ro->selectNow("product","productName","productID",$id) ?></h3>
 				<h4>Php <?php echo number_format($ro->selectNow("product","price","productID",$id)) ?> <span class="glyphicon glyphicon-tags"></span></h4>
-				<h6>
-					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium 
-				</h6>
 				<span class="glyphicon glyphicon-lock"></span> <label>Signup to shop this item</label>
+				<h6>
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+				</h6>
 			</div>
 		</div>
 	</div>

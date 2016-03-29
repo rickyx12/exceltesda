@@ -14,10 +14,7 @@ $ro->getCustomerOrder($customerID);
 <!doctype html>
 <html>
 	<head>
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<script type="text/javascript" src="../css/bootstrap-3.3.5-dist/jquery-2.1.4.min.js"></script>
-		<script type="text/javascript" src="../css/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="../css/bootstrap-3.3.5-dist/css/bootstrap.css"></link>
+
 		<style>
 			#cartThumbnail {
 				width: 100%;
@@ -55,7 +52,7 @@ $ro->getCustomerOrder($customerID);
 		<script>
 			
 			$(document).ready(function() {
-				<?php if($ro->selectNow("customerOrder","orderID","custID",$customerID) != "" ) { ?>
+				<?php if($ro->getCustomerOrder_orderID() != "" ) { ?>
 				<?php foreach($ro->getCustomerOrder_orderID() as $id) { ?>
 				$(document).on("click","#removeCart<?php echo $id ?>",function() {
 					var order<?php echo $id ?> = $("#orderID<?php echo $id ?>").val();
@@ -76,7 +73,8 @@ $ro->getCustomerOrder($customerID);
 				});
 
 				$("#myModal").on("hidden.bs.modal",function() {
-					window.location = "../html/index.html";
+					//window.location = "../html/index.html";
+					location.reload();
 				});
 
 			});
@@ -85,7 +83,7 @@ $ro->getCustomerOrder($customerID);
 	</head>
 	<body>
 		<div class="mainBox">
-		<?php if($ro->selectNow("customerOrder","orderID","custID",$customerID)) { ?>
+		<?php if($ro->doubleSelectNow("customerOrder","orderID","custID",$customerID,"status","") != "") { ?>
 		<?php foreach($ro->getCustomerOrder_orderID() as $id) { ?>
 			<?php $total += ($ro->selectNow("product","price","productID",$ro->selectNow("customerOrder","productID","orderID",$id)) * $ro->selectNow("customerOrder","quantity","orderID",$id) ) ?>
 			<div class="">
@@ -109,9 +107,9 @@ $ro->getCustomerOrder($customerID);
 			<h4>Php <?php echo number_format($total,2) ?></h4>
 		</div>
 		<div id="checkoutBtn">
-			<?php if($ro->selectNow("customerOrder","orderID","custID",$customerID) != "") { ?>
+			<?php if($ro->getCustomerOrder_orderID() != "") { ?>
 			<input type="button" id="checkoutBtn" class="btn btn-success" data-toggle="modal" data-target="#myModal" value="Checkout >>">
-			<?php } ?>
+			<?php }else { } ?>
 		</div>
 
 			<!-- Modal -->
