@@ -9,13 +9,13 @@ $name = $_POST['name'];
 $address = $_POST['address'];
 $contactNo = $_POST['contactNo'];
 
-$customerInfo = [
+$customerInfo = array(
 "custName" => $name,
 "address" => $address,
 "contactNo" => $contactNo,
 "username" => strtok($name," "),
 "password" => $password
-];
+);
 /*
 $customerAcct = [
 "username" => $username,

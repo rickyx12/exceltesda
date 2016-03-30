@@ -8,7 +8,11 @@
 	<body>
 
 				<?php if($ro->getProductList_productID() == "") { ?>
+			<div class="col-md-12">
+				<div class="row">
 					<div id="noSearch" class="alert alert-danger">Sorry, There is no <b><?php echo $_POST["searchItem"] ?></b> in our Products</div>
+				</div>
+			</div>
 				<?php }else { ?>
 
 				<?php foreach($ro->getProductList_productID() as $id) { ?>

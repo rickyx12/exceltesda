@@ -21,6 +21,7 @@
 				var username_inputted = $("#username_signinNow").val();
 				var password_inputted = $("#password_signinNow").val();
 
+				if( username_inputted != "" || password_inputted != "" ) {
 				$.post("../php/signin.php",{username:username_inputted,password:password_inputted},function(data){
 					if(data == "failed") {
 						$("#signinError").show();
@@ -35,6 +36,10 @@
 						}
 					}
 				});
+				}else {
+					$("#signinError").show();
+				}
+
 
 			});
 

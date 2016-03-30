@@ -60,6 +60,11 @@
 	</head>
 	<body>
 		<div id="mainBox">
+
+		<?php if($ro->getProductList_productID() == "") { ?>
+					<div id="noSearch" class="alert alert-danger">Sorry, There is no <b><?php echo $_POST["search"] ?></b> in our Products</div>
+		<?php }else { ?>
+
 		<div id="subBox">
 		<?php foreach($ro->getProductList_productID() as $id ) { ?>
 			<div id="itemBox" class="row">
@@ -116,6 +121,7 @@
 			</div>
 		<?php } ?>
 		</div>
+		<?php } ?>
 		</div>
 	</body>
 </html>
