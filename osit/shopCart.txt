@@ -1,0 +1,161 @@
+-- MySQL dump 10.13  Distrib 5.5.27, for Linux (i686)
+--
+-- Host: localhost    Database: shoppingCart
+-- ------------------------------------------------------
+-- Server version	5.5.27-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `category` (
+  `catID` int(11) NOT NULL AUTO_INCREMENT,
+  `catName` varchar(30) NOT NULL,
+  PRIMARY KEY (`catID`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category`
+--
+
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (1,'Casual Shirts'),(2,'Jeans'),(3,'T-shirts'),(4,'Footwear'),(5,'Shorts'),(6,'Watches'),(7,'Dresses'),(8,'Churidar Suits'),(9,'Kurtas'),(10,'Sandals'),(11,'Office Wear'),(12,'Artificial Jewelry'),(13,'Baby Apparel'),(14,'Girls Apparel'),(15,'Boys Apparel'),(16,'Kids Toys');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customer`
+--
+
+DROP TABLE IF EXISTS `customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customer` (
+  `custID` int(11) NOT NULL AUTO_INCREMENT,
+  `custName` varchar(50) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `contactNo` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  PRIMARY KEY (`custID`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer`
+--
+
+LOCK TABLES `customer` WRITE;
+/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (18,'maricar','makati','099999','',''),(19,'bronson','antipolo','09282663758','',''),(20,'ricardo','q.c','0928','',''),(21,'aizex','q.c','z2tue31','',''),(22,'Ariel','q.c','0928','ariel','ariel'),(23,'ricky','Kamuning Quezon City','09282663758','ricky','ricky'),(24,'Juan Dela Cruz','Sacred Heart','09282663758','juan','juan'),(25,'Maricar','129 Sct.Dr Lazcano St, kamuning, Quezon City','09282663758','',''),(26,'Ralp De Castro','Pasig','09222222','',''),(27,'Ian Molino','Pasig','09090909090','ian','ian'),(30,'ricardox','quezon city','0928','ricardox','z2tue31'),(31,'xricky','quezon city','0928277323','xricky','z2tue31'),(33,'Pedro Penduko','quezon city','09282663758','Pedro','pedro123');
+/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customerOrder`
+--
+
+DROP TABLE IF EXISTS `customerOrder`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customerOrder` (
+  `orderID` int(11) NOT NULL AUTO_INCREMENT,
+  `orderDate` date NOT NULL,
+  `custID` int(11) NOT NULL,
+  `productID` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  PRIMARY KEY (`orderID`)
+) ENGINE=InnoDB AUTO_INCREMENT=262 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customerOrder`
+--
+
+LOCK TABLES `customerOrder` WRITE;
+/*!40000 ALTER TABLE `customerOrder` DISABLE KEYS */;
+INSERT INTO `customerOrder` VALUES (172,'2016-03-21',22,40,1,'checkout'),(173,'2016-03-21',22,80,3,'checkout'),(174,'2016-03-26',23,39,2,'checkout'),(175,'2016-03-26',23,38,3,'checkout'),(176,'2016-03-26',23,40,1,'checkout'),(177,'2016-03-23',24,40,2,'checkout'),(178,'2016-03-26',25,39,2,'checkout'),(180,'2016-03-26',25,40,1,'checkout'),(181,'2016-03-28',26,101,1,'checkout'),(183,'2016-03-28',26,105,1,'checkout'),(184,'2016-03-28',27,101,1,'checkout'),(185,'2016-03-28',27,94,3,'checkout'),(187,'2016-03-28',27,105,2,'checkout'),(224,'2016-03-28',31,101,1,'checkout'),(225,'2016-03-28',31,40,1,'checkout'),(226,'2016-03-28',31,94,2,'checkout'),(237,'2016-03-29',23,101,1,'checkout'),(238,'2016-03-29',23,40,1,'checkout'),(240,'2016-03-29',23,94,1,'checkout'),(243,'2016-03-29',27,105,2,'checkout'),(244,'2016-03-29',31,100,1,'checkout'),(245,'2016-03-29',31,95,1,'checkout'),(253,'2016-03-29',27,102,3,'checkout'),(257,'2016-03-30',22,94,1,'checkout'),(258,'2016-03-30',22,105,1,'checkout'),(260,'2016-03-30',33,40,1,'checkout'),(261,'2016-03-30',33,94,3,'checkout');
+/*!40000 ALTER TABLE `customerOrder` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product` (
+  `productID` int(11) NOT NULL AUTO_INCREMENT,
+  `productName` varchar(50) NOT NULL,
+  `price` double NOT NULL,
+  `gender` varchar(5) NOT NULL,
+  `catID` int(11) NOT NULL,
+  `image` varchar(50) NOT NULL,
+  PRIMARY KEY (`productID`)
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (38,'Red Riding Hood',2500,'F',7,'Red Riding Hood Dress-900.jpg'),(39,'Floral',1000,'F',7,'Floral Dress-600.jpg'),(40,'Black Sexy',3000,'F',7,'Black Sexy Dress-800.jpg'),(80,'Peach',3000,'F',7,'Pretty in Peach Dress-850.jpg'),(81,'Gold',2000,'F',6,'Gold Casual-3500.jpg'),(82,'Maroon',1000,'F',6,'Maroon Leather Strap-3000.jpg'),(83,'Silver',2300,'F',6,'Silver Watch-2500.jpg'),(84,'White Gold',1500,'F',6,'White Gold Watch-4000.jpg'),(85,'Cupcake',400,'F',3,'Cupcake Shirt-300.jpg'),(86,'Cute',350,'F',3,'Cute Shirt-350.jpg'),(87,'Penguin',100,'F',3,'Penguins Shirt-300.jpg'),(88,'Plain Fitted',350,'F',3,'Plain Fitted Shirt -300.jpg'),(89,'Casual',700,'F',11,'Casual Blouse-600.jpg'),(90,'Hot Pink',1000,'F',11,'Hot Pink Office Blouse-700.jpg'),(91,'Pink Blouse',450,'F',11,'Pink Office Blouse-600.jpg'),(92,'Winter',250,'F',11,'Winter Blouse-800.jpg'),(94,'Breda',2700,'M',6,'Breda Casual Watch - 4000.jpg'),(95,'Fossile',2300,'M',6,'Fossil Silver Watch -5800.jpg'),(96,'Gold',2670,'M',6,'Gold Watch-4500.jpg'),(97,'Laurel',3500,'M',6,'Laurels Formal Watch-3000.jpg'),(98,'White',500,'M',11,'White-long-sleeve-450.jpg'),(99,'Gray',600,'M',11,'Gray-Long-Sleeve-650.jpg'),(100,'Checquered',800,'M',11,'Checquered Long Sleeve-750.jpg'),(101,'Black Jean',900,'M',2,'Black Jean-900.jpg'),(102,'Fitted Jeans',1000,'M',2,'Fitted Jeans-800.jpg'),(103,'Stoned Jeans',1100,'M',2,'Stoned Jean-700.jpg'),(104,'White Washed',1000,'M',2,'White Washed Jeans-850.jpg'),(105,'Captain America',850,'M',3,'Captain America-500.jpg'),(106,'Gray Bear',600,'M',3,'Gray Bear-350.jpg'),(107,'Rubiks Cube',1000,'M',3,'Rubiks Cube-500.jpg'),(108,'Super Dry',900,'M',3,'Super Dry-400.jpg'),(109,'Trainer Shoes',2500,'M',15,'1.jpg');
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `userAccount`
+--
+
+DROP TABLE IF EXISTS `userAccount`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `userAccount` (
+  `userID` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `usertype` varchar(10) NOT NULL,
+  PRIMARY KEY (`userID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `userAccount`
+--
+
+LOCK TABLES `userAccount` WRITE;
+/*!40000 ALTER TABLE `userAccount` DISABLE KEYS */;
+INSERT INTO `userAccount` VALUES (1,'rickyx12','z2tue31','admin'),(2,'ric123','ricardo','user'),(3,'','','user'),(4,'','','user'),(5,'','','user'),(6,'','','user'),(7,'','','user'),(8,'','','user');
+/*!40000 ALTER TABLE `userAccount` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-03-31  9:20:16
